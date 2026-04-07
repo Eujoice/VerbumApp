@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.auth.LoginFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/fontmilonga"
+        android:textColor="@color/color_default"
+        android:textSize="70sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/containerComponents"
+        style="@style/containerComponents"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/containerComponents"
+        app:layout_constraintEnd_toEndOf="@id/containerComponents"
+        app:layout_constraintStart_toStartOf="@id/containerComponents"
+        app:layout_constraintTop_toTopOf="@id/containerComponents">
+
+        <TextView
+            android:id="@+id/txtViewLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matrícula:"
+            style="@style/labels"/>
+        <EditText
+            android:id="@+id/editTxtLogin"
+            android:paddingLeft="14dp"
+            android:layout_width="270dp"
+            android:layout_height="48dp"
+            android:hint="Insira sua matrícula"
+            style="@style/editTextStyle"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/txtViewPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senha:"
+            style="@style/labels"/>
+        <EditText
+            android:id="@+id/editTxtPassword"
+            android:paddingLeft="14dp"
+            android:layout_width="270dp"
+            android:layout_height="48dp"
+            android:hint="Insira sua senha"
+            style="@style/editTextStyle"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            android:layout_width="190dp"
+            android:layout_height="48dp"
+            android:text="Acessar"
+            android:background="@drawable/bg_btn"
+            app:backgroundTint="@null"
+            style="@style/labels"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"
+            />
+
+        <TextView
+            android:id="@+id/txtViewPasswordReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esqueceu a senha?"
+            style="@style/labels"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

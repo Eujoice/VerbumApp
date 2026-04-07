@@ -1,4 +1,4 @@
-package com.example.verbumteste.ui
+package com.example.verbumteste.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.verbumteste.R
-import com.example.verbumteste.databinding.FragmentSplashBinding
+import com.example.verbumteste.databinding.FragmentLoginBinding
 
 
-class SplashFragment : Fragment() {
+class LoginFragment : Fragment() {
 
-    private var _binding: FragmentSplashBinding? = null
+    private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,8 +27,6 @@ class SplashFragment : Fragment() {
         _binding = null
     }
 
-
-
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -36,11 +34,12 @@ class SplashFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SplashFragment.
+         * @return A new instance of fragment LoginFragment.
          */
+        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SplashFragment().apply {
+            LoginFragment().apply {
                 arguments = Bundle().apply {
                 }
             }
