@@ -1,12 +1,15 @@
 package com.example.verbumteste.ui
 
 import android.os.Bundle
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentSplashBinding
+import java.util.logging.Handler
 
 
 class SplashFragment : Fragment() {
@@ -22,27 +25,20 @@ class SplashFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        android.os.Handler(Looper.getMainLooper()).postDelayed({checkAuth()}, 3000)
+    }
+
+    private fun checkAuth() {
+        findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
 
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SplashFragment.
-         */
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SplashFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
-    }
 }
