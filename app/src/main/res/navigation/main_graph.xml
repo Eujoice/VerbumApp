@@ -18,5 +18,14 @@
         android:id="@+id/loginFragment"
         android:name="com.example.verbumteste.ui.auth.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_fragment_acervo"
+            app:destination="@id/fragment_acervo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_acervo"
+        android:name="com.example.verbumteste.fragment_acervo"
+        android:label="fragment_acervo"
+        tools:layout="@layout/fragment_acervo" />
 </navigation>
