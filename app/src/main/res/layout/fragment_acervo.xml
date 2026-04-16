@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment_acervo">
@@ -12,56 +13,64 @@
             android:paddingBottom="80dp">
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/header_background"
-                android:orientation="vertical"
-                android:padding="20dp"
-                android:paddingTop="48dp">
+                android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/headerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/header_background"
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="60dp"
+                    >
+                    <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
+                    android:fontFamily="@font/fontpoppins"
                     android:text="Acervo"
                     android:textColor="#FFFFFF"
-                    android:textSize="26sp"
+                    android:textSize="23sp"
                     android:textStyle="bold"
                     android:paddingTop="5dp"/>
 
-                <EditText
-                    android:id="@+id/searchBar"
+                    <EditText
+                        android:id="@+id/searchBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/pesquisa"
+                        android:drawableEnd="@drawable/lupa"
+                        android:elevation="2dp"
+                        android:inputType="text"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp" /> />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bannerCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/pesquisa"
-                    android:drawableEnd="@drawable/lupa"
-                    android:elevation="2dp"
-                    android:inputType="text"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp" />
+                    android:layout_height="160dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_below="@id/headerContainer"
+                    android:layout_marginTop="-55dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bannerpercy" />
+                </androidx.cardview.widget.CardView>
 
-            <FrameLayout
-                android:id="@+id/viewPagerFeatured"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@drawable/bannerpercy"
-                    app:shapeAppearanceOverlay="@style/RoundedImageViewStyle" />
-
-            </FrameLayout>
-
-
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/dotsIndicator"
                 android:layout_width="12dp"
@@ -83,26 +92,32 @@
                 android:paddingEnd="16dp"
                 android:paddingTop="20dp"
                 android:paddingBottom="8dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingStart="5dp"
+                    android:fontFamily="@font/fontpoppins"
                     android:text="Populares"
-                    android:textSize="23sp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#6C9467"/>
+                    android:textColor="#6C9467"
+                    />
 
                 <TextView
                     android:id="@+id/VerMaisPopulares"
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/seta"
+                    android:fontFamily="@font/fontpoppins"
+                    android:paddingTop="5dp"
                     android:paddingEnd="5dp"
                     android:text="Ver mais"
                     android:textColor="#2E7D32"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -112,7 +127,8 @@
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
                 android:paddingStart="20dp"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                android:layout_marginTop="-6dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -127,7 +143,8 @@
 
                         <FrameLayout
                             android:layout_width="110dp"
-                            android:layout_height="155dp">
+                            android:layout_height="155dp"
+                            android:paddingEnd="5dp">
 
                             <ImageView
                                 android:id="@+id/imgBook1"
@@ -140,11 +157,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingStart="5dp"
                             android:text="Crime e Castigo"
                             android:textSize="12sp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -152,6 +170,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Fiódor Dostoiévski"
+                            android:paddingStart="5dp"
                             android:textSize="11sp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
@@ -185,7 +204,8 @@
                             android:textSize="12sp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -193,6 +213,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Taylor Jenkins Reid"
+                            android:layout_marginStart="6dp"
                             android:textSize="11sp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
@@ -222,10 +243,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Dom Quixote"
+                            android:layout_marginStart="6dp"
                             android:textSize="12sp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -233,6 +255,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Miguel de Cervantes"
+                            android:layout_marginStart="6dp"
                             android:textSize="11sp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
@@ -258,8 +281,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingStart="5dp"
                     android:text="Ficção"
-                    android:textSize="23sp"
+                    android:fontFamily="@font/fontpoppins"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     android:textColor="#6C9467"/>
 
@@ -268,10 +293,12 @@
                     android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/seta"
+                    android:fontFamily="@font/fontpoppins"
+                    android:paddingTop="5dp"
                     android:paddingEnd="5dp"
                     android:text="Ver mais"
                     android:textColor="#2E7D32"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
 
 
             </LinearLayout>
@@ -286,17 +313,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-6dp">
 
                     <LinearLayout
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginEnd="12dp">
+                        android:layout_marginEnd="12dp"
+                        >
 
                         <FrameLayout
                             android:layout_width="110dp"
-                            android:layout_height="155dp">
+                            android:layout_height="155dp"
+                            >
 
                             <ImageView
                                 android:id="@+id/imgBook4"
@@ -310,10 +340,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="A biblioteca da..."
+                            android:layout_marginStart="6dp"
                             android:textSize="12sp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -321,6 +352,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Matt Haig"
+                            android:layout_marginStart="6dp"
                             android:textSize="11sp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
@@ -350,10 +382,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="O Hobbit"
+                            android:layout_marginStart="6dp"
                             android:textSize="12sp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -361,6 +394,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="J.R.R Tolkien"
+                            android:layout_marginStart="6dp"
                             android:textSize="11sp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
@@ -391,9 +425,10 @@
                             android:layout_height="wrap_content"
                             android:text="A Hora da Estrela"
                             android:textSize="12sp"
+                            android:layout_marginStart="6dp"
                             android:textColor="#6C9467"
                             android:textStyle="bold"
-                            android:layout_marginTop="6dp"
+                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
                             android:ellipsize="end"/>
 
@@ -402,6 +437,7 @@
                             android:layout_height="wrap_content"
                             android:text="Clarice Lispector"
                             android:textSize="11sp"
+                            android:layout_marginStart="6dp"
                             android:textColor="#666666"
                             android:layout_marginTop="2dp"
                             android:maxLines="1"
