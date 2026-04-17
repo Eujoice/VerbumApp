@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_acervo"
-        android:name="com.example.verbumteste.fragment_acervo"
+        android:name="com.example.verbumteste.FragmentAcervo"
         android:label="fragment_acervo"
         tools:layout="@layout/fragment_acervo" />
 </navigation>
