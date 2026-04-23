@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
-
 
     private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
