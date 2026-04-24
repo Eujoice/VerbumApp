@@ -9,23 +9,52 @@
         android:id="@+id/splashFragment"
         android:name="com.example.verbumteste.ui.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.verbumteste.ui.auth.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_fragment_acervo"
-            app:destination="@id/fragment_acervo" />
+            app:destination="@id/fragment_acervo"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/fragment_acervo"
         android:name="com.example.verbumteste.FragmentAcervo"
         android:label="fragment_acervo"
         tools:layout="@layout/fragment_acervo" />
+
+    <fragment
+        android:id="@+id/minhaBibliotecaFragment"
+        android:name="com.example.verbumteste.ui.MinhaBibliotecaFragment"
+        android:label="fragment_minha_biblioteca"
+        tools:layout="@layout/fragment_minha_biblioteca" />
+
+    <fragment
+        android:id="@+id/dadosPessoaisFragment"
+        android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
+        android:label="fragment_dados_pessoais"
+        tools:layout="@layout/fragment_dados_pessoais" />
+    <fragment
+        android:id="@+id/fragment_acervo"
+        android:name="com.example.verbumteste.FragmentAcervo"
+        android:label="fragment_acervo"
+        tools:layout="@layout/fragment_acervo">
+        <action
+            android:id="@+id/action_acervo_to_biblioteca"
+            app:destination="@id/minhaBibliotecaFragment" />
+        <action
+            android:id="@+id/action_acervo_to_perfil"
+            app:destination="@id/dadosPessoaisFragment" />
+    </fragment>
+
 </navigation>

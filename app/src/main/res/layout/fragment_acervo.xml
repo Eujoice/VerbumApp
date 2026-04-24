@@ -22,7 +22,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                >
 
                 <LinearLayout
                     android:id="@+id/headerContainer"
@@ -67,10 +68,8 @@
                     android:layout_marginTop="-55dp"
                     android:clipChildren="false"
                     android:clipToPadding="false"
-                    android:paddingStart="50dp"
-                    android:paddingEnd="50dp" >
-
-                </androidx.viewpager2.widget.ViewPager2>
+                    android:paddingStart="30dp"
+                    android:paddingEnd="30dp" />
 
             </RelativeLayout>
             <LinearLayout
@@ -107,7 +106,7 @@
                     android:text="Populares"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#6C9467"
+                    android:textColor="#477740"
                     />
 
                 <TextView
@@ -289,7 +288,7 @@
                     android:fontFamily="@font/fontpoppins"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#6C9467"/>
+                    android:textColor="#477740"/>
 
                 <TextView
                     android:id="@+id/VerMaisFiccao"
@@ -300,7 +299,7 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
                     android:text="Ver mais"
-                    android:textColor="#2E7D32"
+                    android:textColor="#477740"
                     android:textSize="12sp" />
 
 
