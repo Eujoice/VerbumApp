@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/acervo"
-        android:title="Acervo"/>
-<!--       android:icon="@drawable/ic_home"-->
+        android:title="Acervo"
+        android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/meuacervo"
-        android:title="Meu Acervo"/>
-<!--        android:icon="@drawable/ic_meuacervo_fechado"/>-->
+        android:title="Meu Acervo"
+        android:icon="@drawable/ic_meuacervofechado"/>
 
     <item
         android:id="@+id/perfil"
