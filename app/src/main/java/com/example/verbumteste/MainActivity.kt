@@ -14,8 +14,8 @@ import com.example.verbumteste.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener { // Classe para tornar a BottomNav navegável
-
+abstract class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener { // Classe para tornar a BottomNav navegável
+//abstract pra tirar o erro
     private lateinit var fragmentManager: FragmentManager
     private lateinit var binding: ActivityMainBinding
 
@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         WindowCompat.setDecorFitsSystemWindows(window, false)
         WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.statusBars())
 
-        binding.bottom_nav_bar.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                // parei aqui, tentando fazer a bottom_nav_bar funcionar
-            }
-        }
+//        binding.bottom_nav_bar.setOnItemSelectedListener { item ->
+//            when(item.itemId) {
+//                // parei aqui, tentando fazer a bottom_nav_bar funcionar
+//            }
+//        }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_bar)
         bottomNav.visibility = View.GONE // esconde até o login

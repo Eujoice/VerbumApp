@@ -1,14 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DadosPessoaisFragment">
+    android:background="#F5F5F5">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- header verde do usuario -->
+
+    <!-- card branco de menu -->
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="280dp"
+        android:background="@drawable/bg_header_perfil"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
 
-</FrameLayout>
+        <!-- botao voltar -->
+        <ImageView
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/setavoltarpag"
+            app:tint="#FFFFFF" />
+
+        <!-- foto de perfil -->
+        <FrameLayout
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity='center_horizontal'>
+
+            <ImageView
+                android:id="@+id/imgFotoPerfil"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/bg_foto_perfil"
+                android:contentDescription="Foto de perfil"
+                android:padding="9dp"
+                android:src="@drawable/user"
+                app:tint="#FFFFFF" />
+        </FrameLayout>
+
+        <!-- Nome do usuário -->
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Nome Exemplo"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:fontFamily="@font/fontpoppins"
+            tools:ignore="HardcodedText" />
+
+        <!-- Email do usuário -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="exemplo@gmail.com"
+            android:fontFamily="@font/fontpoppins"
+            android:textColor="#E0EEE0"
+            android:textSize="13sp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:paddingBottom="80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_menu"
+            android:paddingTop="28dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp">
+
+            <!--  pagar multas -->
+            <TextView
+                android:id="@+id/btnPagarMultas"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Pagar Multas"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_botao_menu"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="14dp" />
+            <!--   clickable e focusable e pro android studio tratar o textview igual um botao-->
+
+            <!-- historico -->
+            <TextView
+                android:id="@+id/btnHistorico"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Histórico"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_botao_menu"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="14dp" />
+
+            <!-- dados pessoais -->
+            <TextView
+                android:id="@+id/btnDadosPessoais"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Dados Pessoais"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_botao_menu"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="14dp" />
+
+            <!-- favoritos e avaliacoes -->
+            <TextView
+                android:id="@+id/btnFavoritos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Favoritos e Avaliações"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_botao_menu"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="14dp" />
+
+            <!-- alterar senha -->
+            <TextView
+                android:id="@+id/btnAlterarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Alterar Senha"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_botao_menu"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="14dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
