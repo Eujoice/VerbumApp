@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.verbumteste.databinding.ActivityMainBinding
+import com.example.verbumteste.databinding.FragmentMinhaBibliotecaBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,5 +50,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
+
 }

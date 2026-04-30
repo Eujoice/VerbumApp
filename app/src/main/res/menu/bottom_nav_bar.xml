@@ -7,9 +7,9 @@
         android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/meuacervo"
+        android:id="@+id/fragment_meuacervo"
         android:title="Meu Acervo"
-        android:icon="@drawable/ic_meuacervofechado"/>
+        android:icon="@drawable/ic_book"/>
 
     <item
         android:id="@+id/fragmentPerfil"
