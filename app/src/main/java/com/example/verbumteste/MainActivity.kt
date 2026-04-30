@@ -13,7 +13,7 @@ import com.example.verbumteste.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
+//o main activity estava com muitos erros, pedi pro gemini tentar ajeitar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

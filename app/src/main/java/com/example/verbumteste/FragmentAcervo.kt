@@ -38,7 +38,7 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         }
         viewPager.setPageTransformer(transformer)
 
-
+//arrumar as bolinhas em baixo dos banners
         val dots = arrayOfNulls<ImageView>(images.size)
         for (i in images.indices) {
             dots[i] = ImageView(requireContext()).apply {

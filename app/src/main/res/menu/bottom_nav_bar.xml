@@ -16,5 +16,7 @@
         android:title="Perfil"
         android:icon="@drawable/ic_perfil"/>
 
+<!--    adicionei os drawables que faltavam, exportei do figma -->
+
 
 </menu>
