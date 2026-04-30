@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/acervo"
-        android:title="Acervo"/>
-<!--        android:icon="@drawable/ic_home"-->
+        android:id="@+id/fragmentAcervo"
+        android:title="Acervo"
+        android:icon="@drawable/ic_home"/>
 
     <item
         android:id="@+id/meuacervo"
-        android:title="Meu Acervo"/>
-<!--        android:icon="@drawable/ic_meuacervofechado"/>-->
-<!--arquivos nao encotrados-->
+        android:title="Meu Acervo"
+        android:icon="@drawable/ic_meuacervofechado"/>
+
     <item
-        android:id="@+id/perfil"
+        android:id="@+id/fragmentPerfil"
         android:title="Perfil"
         android:icon="@drawable/ic_perfil"/>
 

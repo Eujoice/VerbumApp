@@ -1,0 +1,17 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/fragmentAcervo"
+        android:name="com.example.verbumteste.FragmentAcervo"
+        android:label="Acervo" />
+
+    <fragment
+        android:id="@+id/fragmentPerfil"
+        android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
+        android:label="Perfil" />
+</navigation>
+
+<!--graph novo pro bottom nav bar (ta tudo dando errado socorro-->
