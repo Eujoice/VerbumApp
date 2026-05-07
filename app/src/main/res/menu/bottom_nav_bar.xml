@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragmentAcervo"
+        android:id="@+id/fragment_acervo"
         android:title="Acervo"
         android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/fragment_meuacervo"
+        android:id="@+id/minhaBibliotecaFragment"
         android:title="Meu Acervo"
         android:icon="@drawable/ic_book"/>
 
     <item
-        android:id="@+id/fragmentPerfil"
+        android:id="@+id/dadosPessoaisFragment"
         android:title="Perfil"
         android:icon="@drawable/ic_perfil"/>
 

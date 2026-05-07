@@ -21,6 +21,12 @@
     <style name="RoundedImageViewStyle">
         <item name="cornerSize">16dp</item> </style>
 
+    <style name="PageTitleStyle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/fontpoppins</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
 
 
 </resources>
