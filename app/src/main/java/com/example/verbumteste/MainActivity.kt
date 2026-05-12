@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.verbumteste.databinding.ActivityMainBinding
 import com.example.verbumteste.databinding.FragmentMinhaBibliotecaBinding
+import com.google.firebase.Firebase
 
 class MainActivity : AppCompatActivity() {
 

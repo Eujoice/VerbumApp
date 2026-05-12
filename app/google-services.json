@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "845475040699",
+    "firebase_url": "https://verbum-bd-default-rtdb.firebaseio.com",
+    "project_id": "verbum-bd",
+    "storage_bucket": "verbum-bd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845475040699:android:d0b56624a179de5b03889e",
+        "android_client_info": {
+          "package_name": "com.example.verbumteste"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS8G-2GiyKANQR7SjoY98akREG90-LbGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
