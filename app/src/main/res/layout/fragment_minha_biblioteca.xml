@@ -1,40 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.MinhaBibliotecaFragment"
+    android:background="@color/white"
     android:id="@+id/minhaBibliotecaFragment"
-    android:background="@color/white">
+    tools:context=".ui.MinhaBibliotecaFragment">
 
+    <!-- Header verde -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="200dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@drawable/bg_header_perfil"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="16dp"
+        android:background="@drawable/bg_header_perfil">
 
         <ImageView
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/setavoltarpag"
             app:tint="#FFFFFF" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meu Acervo"
-            style="@style/PageTitleStyle"
-            android:layout_marginTop="50dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_botao_menu"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/fontpoppins"
+            android:gravity="center"
+            android:text="Minha Biblioteca"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="20dp"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
+    <!-- Card branco com bordas arredondadas -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:paddingBottom="80dp"
+        android:contentDescription="Menu da Minha Biblioteca">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_menu"
+            android:paddingTop="28dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="5dp"
+                android:paddingTop="15dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="Títulos Reservados"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#477740"
+                />
+
+            <LinearLayout
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="12dp"
+                android:paddingTop="20dp">
+
+                <FrameLayout
+                    android:layout_width="110dp"
+                    android:layout_height="155dp"
+                    android:paddingEnd="5dp">
+
+                    <ImageView
+                        android:id="@+id/imgBook1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="Crime e Castigo"
+                        android:background="@drawable/crime" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="Crime e Castigo"
+                    android:textSize="12sp"
+                    android:textColor="#477740"
+                    android:textStyle="bold"
+                    android:layout_marginTop="-6dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="12dp">
+
+                <FrameLayout
+                    android:layout_width="105dp"
+                    android:layout_height="150dp">
+
+                    <ImageView
+                        android:id="@+id/imgBook2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ocavaleiro"
+                        android:contentDescription="O Cavaleiro.."/>
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="O Caveleiro dos Sete Reinos"
+                    android:textSize="12sp"
+                    android:textColor="#477740"
+                    android:textStyle="bold"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="-6dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

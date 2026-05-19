@@ -8,8 +8,9 @@
 
     <item
         android:id="@+id/minhaBibliotecaFragment"
-        android:title="Meu Acervo"
+        android:title="Minha Biblioteca"
         android:icon="@drawable/ic_book"/>
+    <!--        mudei o text view pro nome que tava no figma-->
 
     <item
         android:id="@+id/dadosPessoaisFragment"

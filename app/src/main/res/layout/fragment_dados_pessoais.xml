@@ -92,22 +92,23 @@
             android:paddingBottom="20dp">
 
             <!--  pagar multas -->
+            <!--   clickable e focusable e pro android studio tratar o textview igual um botao-->
+
+            <!-- historico -->
             <TextView
                 android:id="@+id/btnPagarMultas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:text="Pagar Multas"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:fontFamily="@font/fontpoppins"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/bg_botao_menu"
-                android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="14dp" />
-            <!--   clickable e focusable e pro android studio tratar o textview igual um botao-->
+                android:fontFamily="@font/fontpoppins"
+                android:gravity="center"
+                android:text="Pagar Multas"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
 
-            <!-- historico -->
             <TextView
                 android:id="@+id/btnHistorico"
                 android:layout_width="match_parent"
@@ -120,7 +121,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="14dp" />
+                android:layout_marginBottom="30dp" />
 
             <!-- dados pessoais -->
             <TextView
@@ -135,7 +136,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="14dp" />
+                android:layout_marginBottom="30dp" />
 
             <!-- favoritos e avaliacoes -->
             <TextView
@@ -150,7 +151,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="14dp" />
+                android:layout_marginBottom="30dp" />
 
             <!-- alterar senha -->
             <TextView
@@ -165,7 +166,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_marginBottom="14dp" />
+                android:layout_marginBottom="30dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
