@@ -9,10 +9,10 @@
     android:id="@+id/minhaBibliotecaFragment"
     tools:context=".ui.MinhaBibliotecaFragment">
 
-    <!-- Header verde -->
+    <!-- header-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:paddingTop="16dp"
@@ -31,27 +31,29 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
-            android:background="@drawable/bg_botao_menu"
-            android:clickable="true"
-            android:focusable="true"
             android:fontFamily="@font/fontpoppins"
             android:gravity="center"
             android:text="Minha Biblioteca"
             android:textColor="#FFFFFF"
-            android:paddingBottom="20dp"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.02" />
+
+
 
     </LinearLayout>
 
-    <!-- Card branco com bordas arredondadas -->
+    <!-- card branco -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:paddingBottom="80dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="175dp"
+        android:paddingBottom="16dp"
+        android:fillViewport="true"
         android:contentDescription="Menu da Minha Biblioteca">
 
         <LinearLayout
@@ -59,32 +61,61 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_card_menu"
-            android:paddingTop="28dp"
+            android:paddingTop="32dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="20dp">
+            android:paddingBottom="28dp">
 
-            <TextView
-                android:layout_width="300dp"
+            <!-- cabeçalho -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:paddingStart="5dp"
-                android:paddingTop="15dp"
-                android:fontFamily="@font/fontpoppins"
-                android:text="Títulos Reservados"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#477740"
-                />
+                android:paddingTop="4dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/fontpoppins"
+                    android:text="Títulos Reservados"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#477740" />
+
+                <!-- contador titulos-->
+                <TextView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/fontpoppins"
+                    android:background="@drawable/bg_badge_verde" />
+
+            </LinearLayout>
+
+            <!-- divisior -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="16dp"
+                android:background="#1A477740" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
                 android:clipToPadding="false"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:layout_marginTop="15dp">
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="8dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -92,120 +123,201 @@
                     android:orientation="horizontal"
                     android:gravity="top">
 
-                    <!-- Book 1 -->
+                    <!-- livro 1 -->
                     <LinearLayout
-                        android:layout_width="110dp"
+                        android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
-                        android:layout_marginEnd="12dp">
+                        android:layout_marginEnd="14dp">
 
-                        <ImageView
-                            android:id="@+id/imgBook1"
+                        <androidx.cardview.widget.CardView
                             android:layout_width="105dp"
-                            android:layout_height="150dp"
-                            android:contentDescription="Crime e Castigo"
-                            android:background="@drawable/crime"
-                            android:scaleType="fitXY" />
+                            android:layout_height="155dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:id="@+id/imgBook1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="Crime e Castigo"
+                                android:background="@drawable/crime"
+                                android:scaleType="fitXY" />
+
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="8dp"
                             android:text="Crime e Castigo"
                             android:textAlignment="center"
                             android:textSize="12sp"
                             android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
                             android:textStyle="bold"
                             android:maxLines="2"
                             android:ellipsize="end" />
-                    </LinearLayout>
-
-                    <!-- Book 2 -->
-                    <LinearLayout
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginEnd="12dp"
-                        android:paddingTop="4dp">
-
-                        <ImageView
-                            android:id="@+id/imgBook2"
-                            android:layout_width="105dp"
-                            android:layout_height="140dp"
-                            android:contentDescription="O cavaleiro"
-                            android:src="@drawable/ocavaleiro"
-                            android:scaleType="fitXY" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="2dp"
+                            android:text="Dostoiévski"
+                            android:textAlignment="center"
+                            android:textSize="11sp"
+                            android:textColor="#888888"
+                            android:fontFamily="@font/fontpoppins"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- livro 2 -->
+                    <LinearLayout
+                        android:layout_width="115dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="14dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="105dp"
+                            android:layout_height="155dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:id="@+id/imgBook2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="O cavaleiro"
+                                android:src="@drawable/ocavaleiro"
+                                android:scaleType="fitXY" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="O Cavaleiro dos Sete Reinos"
                             android:textAlignment="center"
                             android:textSize="12sp"
                             android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
                             android:textStyle="bold"
                             android:maxLines="2"
                             android:ellipsize="end" />
-                    </LinearLayout>
-
-                    <!-- Book 3 -->
-                    <LinearLayout
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginEnd="12dp"
-                        android:paddingTop="2dp"
-                        >
-
-                        <ImageView
-                            android:id="@+id/imgBook3"
-                            android:layout_width="105dp"
-                            android:layout_height="141dp"
-                            android:background="@drawable/apaciente"
-                            android:contentDescription="A paciente silenciosa"
-                            android:scaleType="fitXY" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="2dp"
+                            android:text="G.R.R. Martin"
+                            android:textAlignment="center"
+                            android:textSize="11sp"
+                            android:textColor="#888888"
+                            android:fontFamily="@font/fontpoppins"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- livro 3 -->
+                    <LinearLayout
+                        android:layout_width="115dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="14dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="105dp"
+                            android:layout_height="155dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
+
+                            <ImageView
+                                android:id="@+id/imgBook3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/apaciente"
+                                android:contentDescription="A paciente silenciosa"
+                                android:scaleType="fitXY" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="A Paciente Silenciosa"
                             android:textAlignment="center"
                             android:textSize="12sp"
                             android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
                             android:textStyle="bold"
                             android:maxLines="2"
+                            android:ellipsize="end" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Alex Michaelides"
+                            android:textAlignment="center"
+                            android:textSize="11sp"
+                            android:textColor="#888888"
+                            android:fontFamily="@font/fontpoppins"
+                            android:maxLines="1"
                             android:ellipsize="end" />
                     </LinearLayout>
 
                 </LinearLayout>
+            </HorizontalScrollView>
 
+            <!-- espaçador entre seções -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="0dp"
+                android:background="#1A477740" />
+
+            <!-- cabeçalho2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="2dp"
-                android:paddingStart="2dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="20dp"
-                >
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="5dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp">
 
                 <TextView
-                    android:layout_width="300dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingStart="5dp"
-                    android:paddingTop="15dp"
                     android:fontFamily="@font/fontpoppins"
                     android:text="Títulos Pendentes"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#477740"/>
+                    android:textColor="#477740" />
 
+                <TextView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/fontpoppins"
+                    android:background="@drawable/bg_badge_verde" />
 
             </LinearLayout>
 
@@ -213,146 +325,153 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
-                android:paddingStart="0dp"
-                android:clipToPadding="false">
+                android:clipToPadding="false"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="8dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="-6dp">
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="110dp"
+                        android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginEnd="12dp"
-                        >
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="14dp">
 
-                        <FrameLayout
-                            android:layout_width="110dp"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="105dp"
                             android:layout_height="155dp"
-                            >
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
 
                             <ImageView
                                 android:id="@+id/imgBook4"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/biblioteca"
-                                android:contentDescription="A biblioteca da meia-noite"/>
-                        </FrameLayout>
+                                android:background="@drawable/domquixote"
+                                android:contentDescription="Dom Quixote"
+                                android:scaleType="fitXY" />
+
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="A biblioteca da..."
-                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Dom Quixote"
+                            android:textAlignment="center"
                             android:textSize="12sp"
                             android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
                             android:textStyle="bold"
-                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
-                            android:ellipsize="end"/>
+                            android:ellipsize="end" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Matt Haig"
-                            android:layout_marginStart="6dp"
-                            android:textSize="11sp"
-                            android:textColor="#666666"
                             android:layout_marginTop="2dp"
+                            android:text="Miguel de Cervantes"
+                            android:textAlignment="center"
+                            android:textSize="11sp"
+                            android:textColor="#888888"
+                            android:fontFamily="@font/fontpoppins"
                             android:maxLines="1"
-                            android:ellipsize="end"/>
+                            android:ellipsize="end" />
+
+                        <!-- status -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:text="Pendente"
+                            android:textSize="10sp"
+                            android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
+                            android:background="@drawable/bg_chip_verde" />
+
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="110dp"
+                        android:layout_width="115dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginEnd="12dp">
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="14dp">
 
-                        <FrameLayout
-                            android:layout_width="110dp"
-                            android:layout_height="155dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="105dp"
+                            android:layout_height="155dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="4dp"
+                            app:cardUseCompatPadding="true">
 
                             <ImageView
                                 android:id="@+id/imgBook5"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/hobiit"
-                                android:contentDescription="O Hobbit"/>
-                        </FrameLayout>
+                                android:background="@drawable/frankenstein"
+                                android:contentDescription="Frankenstein"
+                                android:scaleType="fitXY" />
+
+                        </androidx.cardview.widget.CardView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="O Hobbit"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Frankenstein"
+                            android:textAlignment="center"
                             android:textSize="12sp"
                             android:textColor="#477740"
+                            android:fontFamily="@font/fontpoppins"
                             android:textStyle="bold"
-                            android:layout_marginTop="-6dp"
                             android:maxLines="2"
-                            android:ellipsize="end"/>
+                            android:ellipsize="end" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="J.R.R Tolkien"
-                            android:layout_marginStart="6dp"
-                            android:textSize="11sp"
-                            android:textColor="#666666"
                             android:layout_marginTop="2dp"
+                            android:text="Mary Shelley"
+                            android:textAlignment="center"
+                            android:textSize="11sp"
+                            android:textColor="#888888"
+                            android:fontFamily="@font/fontpoppins"
                             android:maxLines="1"
-                            android:ellipsize="end"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginEnd="12dp">
-
-                        <FrameLayout
-                            android:layout_width="110dp"
-                            android:layout_height="155dp">
-
-                            <ImageView
-                                android:id="@+id/imgBook6"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/horadaestrela"
-                                android:contentDescription="A Hora da Estrela"/>
-                        </FrameLayout>
+                            android:ellipsize="end" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="A Hora da Estrela"
-                            android:textSize="12sp"
-                            android:layout_marginStart="6dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:text="Pendente"
+                            android:textSize="10sp"
                             android:textColor="#477740"
-                            android:textStyle="bold"
-                            android:layout_marginTop="-6dp"
-                            android:maxLines="2"
-                            android:ellipsize="end"/>
+                            android:fontFamily="@font/fontpoppins"
+                            android:background="@drawable/bg_chip_verde" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Clarice Lispector"
-                            android:textSize="11sp"
-                            android:layout_marginStart="6dp"
-                            android:textColor="#666666"
-                            android:layout_marginTop="2dp"
-                            android:maxLines="1"
-                            android:ellipsize="end"/>
                     </LinearLayout>
+
+
 
                 </LinearLayout>
             </HorizontalScrollView>
-
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -2,174 +2,295 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- header verde do usuario -->
-
-    <!-- card branco de menu -->
-
+    <!-- Header verde -->
     <LinearLayout
-        android:id="@+id/headerLayout"
+        android:id="@+id/headerPerfil"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:background="@drawable/bg_header_perfil"
-        android:gravity="center"
+        android:layout_height="230dp"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         android:paddingTop="16dp"
-        android:paddingBottom="24dp">
+        android:background="@drawable/bg_header_perfil">
 
-        <!-- botao voltar -->
         <ImageView
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/setavoltarpag"
             app:tint="#FFFFFF" />
 
-        <!-- foto de perfil -->
+        <!-- Avatar com borda branca -->
         <FrameLayout
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_gravity='center_horizontal'>
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_marginBottom="10dp">
 
             <ImageView
-                android:id="@+id/imgFotoPerfil"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:background="@drawable/bg_foto_perfil"
-                android:contentDescription="Foto de perfil"
-                android:padding="9dp"
-                android:src="@drawable/user"
+                android:id="@+id/imgAvatar"
+                android:layout_width="84dp"
+                android:layout_height="84dp"
+                android:src="@drawable/ic_person"
+                android:background="@drawable/bg_avatar_circle"
+                android:padding="14dp"
                 app:tint="#FFFFFF" />
         </FrameLayout>
 
-        <!-- Nome do usuário -->
         <TextView
-            android:id="@+id/tvNome"
+            android:id="@+id/tvNomeUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Nome Exemplo"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:fontFamily="@font/fontpoppins"
-            tools:ignore="HardcodedText" />
+            android:textStyle="bold"
+            android:fontFamily="@font/fontpoppins" />
 
-        <!-- Email do usuário -->
         <TextView
-            android:id="@+id/tvEmail"
+            android:id="@+id/tvEmailUsuario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
             android:text="exemplo@gmail.com"
-            android:fontFamily="@font/fontpoppins"
-            android:textColor="#E0EEE0"
+            android:textColor="#CCF0CC"
             android:textSize="13sp"
-            tools:ignore="HardcodedText" />
+            android:fontFamily="@font/fontpoppins"
+            android:layout_marginTop="2dp" />
 
     </LinearLayout>
 
+    <!-- Conteúdo rolável -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:paddingBottom="80dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="195dp"
+        android:fillViewport="true"
+        android:paddingBottom="72dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/bg_card_menu"
-            android:paddingTop="28dp"
+            android:paddingTop="24dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="20dp">
+            android:paddingBottom="24dp">
 
-            <!--  pagar multas -->
-            <!--   clickable e focusable e pro android studio tratar o textview igual um botao-->
+            <!-- Cards de estatísticas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
 
-            <!-- historico -->
-            <TextView
+                <!-- Stat 1: Lidos -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_verde_suave"
+                    android:padding="12dp"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#477740"
+                        android:fontFamily="@font/fontpoppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lidos"
+                        android:textSize="11sp"
+                        android:textColor="#888888"
+                        android:fontFamily="@font/fontpoppins" />
+                </LinearLayout>
+
+                <!-- Stat 2: Reservas -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_verde_suave"
+                    android:padding="12dp"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#477740"
+                        android:fontFamily="@font/fontpoppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reservas"
+                        android:textSize="11sp"
+                        android:textColor="#888888"
+                        android:fontFamily="@font/fontpoppins" />
+                </LinearLayout>
+
+                <!-- Stat 3: Avaliações -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_chip_verde_suave"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#477740"
+                        android:fontFamily="@font/fontpoppins" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avaliações"
+                        android:textSize="11sp"
+                        android:textColor="#888888"
+                        android:fontFamily="@font/fontpoppins" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1A477740"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Botões do menu -->
+            <!-- Pagar Multas -->
+            <Button
                 android:id="@+id/btnPagarMultas"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/bg_botao_menu"
-                android:clickable="true"
-                android:focusable="true"
-                android:fontFamily="@font/fontpoppins"
-                android:gravity="center"
+                android:layout_marginBottom="12dp"
                 android:text="Pagar Multas"
                 android:textColor="#FFFFFF"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:backgroundTint="#477740"
+                style="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="14dp" />
 
-            <TextView
+            <!-- Histórico -->
+            <Button
                 android:id="@+id/btnHistorico"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
                 android:text="Histórico"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:fontFamily="@font/fontpoppins"
-                android:background="@drawable/bg_botao_menu"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="30dp" />
+                android:backgroundTint="#477740"
+                style="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="14dp" />
 
-            <!-- dados pessoais -->
-            <TextView
+            <!-- Dados Pessoais -->
+            <Button
                 android:id="@+id/btnDadosPessoais"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
                 android:text="Dados Pessoais"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:fontFamily="@font/fontpoppins"
-                android:background="@drawable/bg_botao_menu"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="30dp" />
+                android:backgroundTint="#477740"
+                style="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="14dp" />
 
-            <!-- favoritos e avaliacoes -->
-            <TextView
+            <!-- Favoritos e Avaliações -->
+            <Button
                 android:id="@+id/btnFavoritos"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="12dp"
                 android:text="Favoritos e Avaliações"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:fontFamily="@font/fontpoppins"
-                android:background="@drawable/bg_botao_menu"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="30dp" />
+                android:backgroundTint="#477740"
+                style="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="14dp" />
 
-            <!-- alterar senha -->
-            <TextView
+            <!-- Alterar Senha -->
+            <Button
                 android:id="@+id/btnAlterarSenha"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
+                android:layout_marginBottom="24dp"
                 android:text="Alterar Senha"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:fontFamily="@font/fontpoppins"
-                android:background="@drawable/bg_botao_menu"
-                android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:layout_marginBottom="30dp" />
+                android:backgroundTint="#477740"
+                style="@style/Widget.MaterialComponents.Button"
+                app:cornerRadius="14dp" />
+
+            <!-- Divisor -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#1A477740"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Botão Sair (outline) -->
+            <Button
+                android:id="@+id/btnSair"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Sair"
+                android:textColor="#C0392B"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontpoppins"
+                android:backgroundTint="@android:color/transparent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="14dp"
+                app:strokeColor="#C0392B"
+                app:strokeWidth="1.5dp" />
+
+            <!-- Versão do app -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Versão 1.0.0"
+                android:textColor="#BBBBBB"
+                android:textSize="11sp"
+                android:fontFamily="@font/fontpoppins"
+                android:gravity="center" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
