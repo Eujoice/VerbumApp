@@ -77,71 +77,282 @@
                 android:textColor="#477740"
                 />
 
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:clipToPadding="false"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginTop="15dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="top">
+
+                    <!-- Book 1 -->
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="12dp">
+
+                        <ImageView
+                            android:id="@+id/imgBook1"
+                            android:layout_width="105dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="Crime e Castigo"
+                            android:background="@drawable/crime"
+                            android:scaleType="fitXY" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Crime e Castigo"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Book 2 -->
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="12dp"
+                        android:paddingTop="4dp">
+
+                        <ImageView
+                            android:id="@+id/imgBook2"
+                            android:layout_width="105dp"
+                            android:layout_height="140dp"
+                            android:contentDescription="O cavaleiro"
+                            android:src="@drawable/ocavaleiro"
+                            android:scaleType="fitXY" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="O Cavaleiro dos Sete Reinos"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Book 3 -->
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_marginEnd="12dp"
+                        android:paddingTop="2dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imgBook3"
+                            android:layout_width="105dp"
+                            android:layout_height="141dp"
+                            android:background="@drawable/apaciente"
+                            android:contentDescription="A paciente silenciosa"
+                            android:scaleType="fitXY" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="A Paciente Silenciosa"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             <LinearLayout
-                android:layout_width="110dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginEnd="12dp"
-                android:paddingTop="20dp">
-
-                <FrameLayout
-                    android:layout_width="110dp"
-                    android:layout_height="155dp"
-                    android:paddingEnd="5dp">
-
-                    <ImageView
-                        android:id="@+id/imgBook1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Crime e Castigo"
-                        android:background="@drawable/crime" />
-                </FrameLayout>
+                android:paddingTop="2dp"
+                android:paddingStart="2dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="20dp"
+                >
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:paddingStart="5dp"
-                    android:text="Crime e Castigo"
-                    android:textSize="12sp"
-                    android:textColor="#477740"
+                    android:paddingTop="15dp"
+                    android:fontFamily="@font/fontpoppins"
+                    android:text="Títulos Pendentes"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="-6dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"/>
+                    android:textColor="#477740"/>
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="110dp"
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginEnd="12dp">
+                android:scrollbars="none"
+                android:paddingStart="0dp"
+                android:clipToPadding="false">
 
-                <FrameLayout
-                    android:layout_width="105dp"
-                    android:layout_height="150dp">
-
-                    <ImageView
-                        android:id="@+id/imgBook2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ocavaleiro"
-                        android:contentDescription="O Cavaleiro.."/>
-                </FrameLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O Caveleiro dos Sete Reinos"
-                    android:textSize="12sp"
-                    android:textColor="#477740"
-                    android:textStyle="bold"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="-6dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-6dp">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="110dp"
+                            android:layout_height="155dp"
+                            >
+
+                            <ImageView
+                                android:id="@+id/imgBook4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/biblioteca"
+                                android:contentDescription="A biblioteca da meia-noite"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="A biblioteca da..."
+                            android:layout_marginStart="6dp"
+                            android:textSize="12sp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:layout_marginTop="-6dp"
+                            android:maxLines="2"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Matt Haig"
+                            android:layout_marginStart="6dp"
+                            android:textSize="11sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="2dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp">
+
+                        <FrameLayout
+                            android:layout_width="110dp"
+                            android:layout_height="155dp">
+
+                            <ImageView
+                                android:id="@+id/imgBook5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/hobiit"
+                                android:contentDescription="O Hobbit"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="O Hobbit"
+                            android:layout_marginStart="6dp"
+                            android:textSize="12sp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:layout_marginTop="-6dp"
+                            android:maxLines="2"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="J.R.R Tolkien"
+                            android:layout_marginStart="6dp"
+                            android:textSize="11sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="2dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="12dp">
+
+                        <FrameLayout
+                            android:layout_width="110dp"
+                            android:layout_height="155dp">
+
+                            <ImageView
+                                android:id="@+id/imgBook6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/horadaestrela"
+                                android:contentDescription="A Hora da Estrela"/>
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="A Hora da Estrela"
+                            android:textSize="12sp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="#477740"
+                            android:textStyle="bold"
+                            android:layout_marginTop="-6dp"
+                            android:maxLines="2"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Clarice Lispector"
+                            android:textSize="11sp"
+                            android:layout_marginStart="6dp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="2dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
