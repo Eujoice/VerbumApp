@@ -13,5 +13,3 @@
         android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
         android:label="Perfil" />
 </navigation>
-
-<!--graph novo pro bottom nav bar (ta tudo dando errado socorro-->

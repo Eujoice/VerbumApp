@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_fragment_acervo"
+            app:destination="@id/fragment_acervo" />
     </fragment>
 
     <fragment
@@ -38,7 +41,11 @@
         android:id="@+id/dadosPessoaisFragment"
         android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
         android:label="fragment_dados_pessoais"
-        tools:layout="@layout/fragment_dados_pessoais" />
+        tools:layout="@layout/fragment_dados_pessoais">
+        <action
+            android:id="@+id/"
+    </fragment>
+
     <fragment
         android:id="@+id/fragment_acervo"
         android:name="com.example.verbumteste.FragmentAcervo"
