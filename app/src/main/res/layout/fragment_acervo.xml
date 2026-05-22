@@ -74,13 +74,15 @@
             </RelativeLayout>
             <LinearLayout
                 android:id="@+id/dotsIndicator"
-                android:layout_width="12dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:layout_below="@id/viewPagerBanners"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:minHeight="16dp"
+                android:visibility="visible">
 
 
             </LinearLayout>

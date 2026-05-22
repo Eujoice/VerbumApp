@@ -54,17 +54,19 @@
         android:layout_marginTop="175dp"
         android:paddingBottom="16dp"
         android:fillViewport="true"
+        android:background="@drawable/bg_card_menu"
+        android:clipToOutline="true"
         android:contentDescription="Menu da Minha Biblioteca">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_card_menu"
             android:paddingTop="32dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="28dp">
+            <!-- sem android:background aqui -->
 
             <!-- cabeçalho -->
             <LinearLayout

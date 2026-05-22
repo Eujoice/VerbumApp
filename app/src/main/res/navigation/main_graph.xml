@@ -42,8 +42,8 @@
         android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
         android:label="fragment_dados_pessoais"
         tools:layout="@layout/fragment_dados_pessoais">
-        <action
-            android:id="@+id/"
+<!--        <action-->
+<!--            android:id="@+id/"> </action>-->
     </fragment>
 
     <fragment

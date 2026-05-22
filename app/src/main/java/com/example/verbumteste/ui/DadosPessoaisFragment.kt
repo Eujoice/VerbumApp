@@ -5,30 +5,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentDadosPessoaisBinding
 import com.google.firebase.auth.FirebaseAuth
-
 
 class DadosPessoaisFragment : Fragment() {
 
     private var _binding: FragmentDadosPessoaisBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View { // removi o '?' aqui porque o View Binding garante que a View não será nula
         _binding = FragmentDadosPessoaisBinding.inflate(inflater, container, false)
-        return binding.root // ta dando erro, mas logo ele vai parar de show
+        return binding.root // agora sim, sem erro e parou de show
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth
+        // aproveitei para inicializar o Firebase corretamente, senão daria erro ao rodar
+        auth = FirebaseAuth.getInstance()
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

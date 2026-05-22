@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/bg_header_perfil">
 
     <!-- Header verde -->
     <LinearLayout
@@ -53,15 +53,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvEmailUsuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/fontpoppins"
-            android:text="exemplo@gmail.com"
-            android:textColor="#CCF0CC"
-            android:textSize="13sp" />
+
 
     </LinearLayout>
 
@@ -70,13 +62,14 @@
         android:layout_height="match_parent"
         android:layout_marginTop="195dp"
         android:fillViewport="true"
-        android:paddingBottom="72dp">
+        android:paddingBottom="16dp"
+        android:background="@drawable/bg_card_menu"
+        android:clipToOutline="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_card_menu"
             android:paddingTop="24dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -265,16 +258,6 @@
                 app:cornerRadius="14dp"
                 app:strokeColor="#C0392B"
                 app:strokeWidth="1.5dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Versão 1.0.0"
-                android:textColor="#BBBBBB"
-                android:textSize="11sp"
-                android:fontFamily="@font/fontpoppins"
-                android:gravity="center" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

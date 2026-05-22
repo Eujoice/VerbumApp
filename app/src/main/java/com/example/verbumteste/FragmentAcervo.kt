@@ -38,26 +38,36 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         }
         viewPager.setPageTransformer(transformer)
 
-//arrumar as bolinhas em baixo dos banners
+        // calcula o tamanho fora do apply, usando resources do Fragment
+        val sizePx = (8 * resources.displayMetrics.density).toInt()
+
         val dots = arrayOfNulls<ImageView>(images.size)
+        dotsLayout.removeAllViews() // limpa bolinhas antigas caso onViewCreated seja chamado mais de uma vez
+
         for (i in images.indices) {
             dots[i] = ImageView(requireContext()).apply {
-                setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.dot_indicator))
-                val params = LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                ).apply { setMargins(3, 0, 3, 0) }
-                layoutParams = params
+                setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        if (i == 0) R.drawable.dot_active else R.drawable.dot_inactive
+                    )
+                )
+                layoutParams = LinearLayout.LayoutParams(sizePx, sizePx)
+                    .apply { setMargins(8, 0, 8, 0) }
             }
             dotsLayout.addView(dots[i])
         }
-        dots[0]?.isSelected = true
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 val realIndex = position % images.size
                 for (i in dots.indices) {
-                    dots[i]?.isSelected = (i == realIndex)
+                    dots[i]?.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            if (i == realIndex) R.drawable.dot_active else R.drawable.dot_inactive
+                        )
+                    )
                 }
             }
         })
