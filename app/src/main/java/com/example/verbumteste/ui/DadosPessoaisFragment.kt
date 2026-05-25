@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
+import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentDadosPessoaisBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,6 +31,28 @@ class DadosPessoaisFragment : Fragment() {
 
         // aproveitei para inicializar o Firebase corretamente, senão daria erro ao rodar
         auth = FirebaseAuth.getInstance()
+
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.btnLogout.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Sair")
+            builder.setMessage("Tem certeza que deseja sair?")
+            builder.setPositiveButton("Sim") { dialog, _ ->
+                auth.signOut()
+                findNavController().navigate(R.id.action_dadosPessoaisFragment_to_loginFragment)
+                dialog.dismiss()
+            }
+            builder.setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss() // Fecha o pop-up
+            }
+
+
+            val dialog = builder.create()
+            dialog.show()
+        }
     }
 
     override fun onDestroyView() {

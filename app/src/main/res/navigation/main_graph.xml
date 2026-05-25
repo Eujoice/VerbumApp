@@ -42,8 +42,11 @@
         android:name="com.example.verbumteste.ui.DadosPessoaisFragment"
         android:label="fragment_dados_pessoais"
         tools:layout="@layout/fragment_dados_pessoais">
-<!--        <action-->
-<!--            android:id="@+id/"> </action>-->
+        <action
+            android:id="@+id/action_dadosPessoaisFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/dadosPessoaisFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
