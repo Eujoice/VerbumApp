@@ -27,6 +27,14 @@
         <item name="android:textSize">32sp</item>
     </style>
 
+    <!-- Estilo para caixa de alerta pop up-->
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_edit_txt</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.MaterialComponents.Button</item>
+        <item name="android:fontFamily">@font/fontpoppins</item>
+    </style>
+
 
 
 </resources>

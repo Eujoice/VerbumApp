@@ -37,7 +37,7 @@ class DadosPessoaisFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnLogout.setOnClickListener {
-            val builder = AlertDialog.Builder(requireContext())
+            val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
             builder.setTitle("Sair")
             builder.setMessage("Tem certeza que deseja sair?")
             builder.setPositiveButton("Sim") { dialog, _ ->
