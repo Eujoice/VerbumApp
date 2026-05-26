@@ -7,19 +7,18 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:id="@+id/detalhesLivroLayout"
-    tools:context=".ui.DetalhesLivrosFragment">
+    tools:context=".ui.DetalhesLivroFragment">
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER VERDE ===== -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="220dp"
         android:background="@drawable/bg_header_perfil"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingTop="16dp">
 
-        <!-- Botão Voltar -->
         <ImageView
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
@@ -31,7 +30,6 @@
             android:src="@drawable/setavoltarpag"
             app:tint="#FFFFFF" />
 
-        <!-- Título da página -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,12 +45,11 @@
 
     </LinearLayout>
 
-    <!-- ===== CARD BRANCO PRINCIPAL (sobrepõe o header) ===== -->
+    <!-- ===== CARD BRANCO (começa em 170dp, deixando espaço pro livro sobrepor) ===== -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="155dp"
-        android:paddingBottom="24dp"
+        android:layout_marginTop="172dp"
         android:fillViewport="true"
         android:background="@drawable/bg_card_menu"
         android:clipToOutline="true">
@@ -63,57 +60,22 @@
             android:orientation="vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="28dp">
-
-            <!-- ===== CAPA DO LIVRO (fica no topo, saindo do card) ===== -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="-60dp">
-
-                <!-- Sombra / Card da capa -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="175dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp"
-                    app:cardUseCompatPadding="true"
-                  >
-                    <ImageView
-                        android:id="@+id/imgCapaLivro"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:contentDescription="Capa do livro"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bibliotecadetalhes" />
-
-                </androidx.cardview.widget.CardView>
-
-                <!-- Ícone de favorito -->
-                <ImageView
-                    android:id="@+id/btnFavorito"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_favorite_border"
-                    android:contentDescription="Favoritar" />
-
-            </LinearLayout>
+            android:paddingBottom="28dp"
+            android:paddingTop="150dp">
+            <!-- paddingTop reserva espaço para a capa que flutua por cima -->
 
             <!-- ===== TÍTULO E AUTOR ===== -->
             <TextView
                 android:id="@+id/tvTituloLivro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:fontFamily="@font/fontpoppins"
                 android:gravity="center"
-                android:text="Biblioteca da Meia Noite"
+                android:text="A Biblioteca da Meia Noite"
                 android:textColor="#477740"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingTop="55dp"/>
 
             <TextView
                 android:id="@+id/tvAutorLivro"
@@ -132,7 +94,6 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="14dp"
-                android:layout_marginStart="5dp"
                 android:background="#1A477740" />
 
             <!-- ===== DESCRIÇÃO ===== -->
@@ -142,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fontpoppins"
                 android:lineSpacingMultiplier="1.5"
-                android:maxLines="5"
+                android:maxLines="4"
                 android:ellipsize="end"
                 android:text="Clássico eterno da ficção científica, Flores para Algernon é um dos livros mais tocantes já escritos. A história de Charlie Gordon, um jovem com deficiência intelectual submetido a uma cirurgia experimental para aumentar sua inteligência, é narrada em forma de diário e transforma o leitor por completo."
                 android:textColor="#555555"
@@ -150,40 +111,49 @@
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp" />
 
+            <TextView
+                android:id="@+id/tvVerMais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="5dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="Ver mais"
+                android:textColor="#477740"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
             <!-- ===== DIVISOR ===== -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginStart="5dp"
                 android:background="#1A477740" />
 
-            <!-- ===== STATUS ===== -->
+            <!-- ===== STATUS COM BORDA ===== -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_status_box"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="5dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp">
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:layout_marginBottom="16dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:fontFamily="@font/fontpoppins"
                     android:text="Status: disponível"
-                    android:textColor="#477740"
+                    android:textColor="#6F7880"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-
-
             </LinearLayout>
-
-
 
             <!-- ===== AVALIAÇÃO ===== -->
             <LinearLayout
@@ -192,9 +162,8 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="5dp"
-                android:paddingBottom="15dp">
+                android:paddingBottom="20dp">
 
-                <!-- Nota + Estrelas -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -216,15 +185,13 @@
                             android:textColor="#477740"
                             android:textSize="22sp"
                             android:textStyle="bold"
-                            android:layout_marginEnd="6dp" />
+                            android:layout_marginEnd="8dp" />
 
-
-                        <!-- Estrelas -->
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="6dp">
+                            android:gravity="center_vertical">
 
                             <ImageView android:layout_width="18dp" android:layout_height="18dp"
                                 android:src="@drawable/estrelaavaliacao"
@@ -240,39 +207,36 @@
                             <ImageView android:layout_width="18dp" android:layout_height="18dp"
                                 android:layout_marginStart="2dp"
                                 android:src="@drawable/estrelaavaliacao"
-                                android:contentDescription="meia estrela" />
-                            <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                                android:contentDescription="estrela" />
+                            <ImageView android:layout_width="18dp" android:layout_height="18dp"
                                 android:layout_marginStart="2dp"
-                                android:layout_marginTop="-3sp"
                                 android:src="@drawable/star_filled"
                                 android:contentDescription="estrela vazia" />
 
                         </LinearLayout>
-
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/fontpoppins"
                         android:text="Nota"
                         android:textColor="#888888"
                         android:textSize="11sp"
-                        android:paddingStart="3dp" />
+                        android:paddingStart="2dp" />
 
                 </LinearLayout>
 
-                <!-- Botão Avaliar -->
                 <TextView
                     android:id="@+id/btnAvaliar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="Avaliar"
-                    android:textColor="#477740"
+                    android:textColor="#6F7880"
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/fontpoppins"
@@ -280,12 +244,11 @@
 
             </LinearLayout>
 
-
+            <!-- ===== BOTÃO RESERVAR ===== -->
             <Button
                 android:id="@+id/btnReservar"
-                android:layout_width="360dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
                 android:backgroundTint="#477740"
                 android:fontFamily="@font/fontpoppins"
                 android:letterSpacing="0.04"
@@ -295,8 +258,46 @@
                 android:textStyle="bold"
                 app:cornerRadius="12dp" />
 
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- ===== CAPA DO LIVRO + FAVORITO (filho direto do CoordinatorLayout) ===== -->
+    <!-- Fica por CIMA de tudo, sobrepondo verde e branco livremente -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="100dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="140dp"
+            android:layout_height="220dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true">
+
+            <ImageView
+                android:id="@+id/imgCapaLivro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Capa do livro"
+                android:scaleType="fitXY"
+                android:src="@drawable/bibliotecadetalhes" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Botão favorito sobreposto na borda inferior da capa -->
+        <ImageView
+            android:id="@+id/btnFavorito"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="-18dp"
+            android:background="@drawable/bg_favorito_circle"
+            android:padding="9dp"
+            android:src="@drawable/ic_favorite_border"
+            android:contentDescription="Favoritar" />
+
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

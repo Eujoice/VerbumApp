@@ -23,6 +23,20 @@ class DetalhesLivroFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val tvDescricao = view.findViewById<TextView>(R.id.tvDescricaoLivro)
+        val tvVerMais   = view.findViewById<TextView>(R.id.tvVerMais)
+        var expandido   = false
+
+        tvVerMais.setOnClickListener {
+            expandido = !expandido
+            if (expandido) {
+                tvDescricao.maxLines = Int.MAX_VALUE
+                tvVerMais.text = "Ver menos"
+            } else {
+                tvDescricao.maxLines = 4
+                tvVerMais.text = "Ver mais"
+            }
+        }
 
         // Botão Voltar
         view.findViewById<ImageView>(R.id.btnVoltar).setOnClickListener {
