@@ -51,7 +51,8 @@
         android:layout_marginTop="172dp"
         android:fillViewport="true"
         android:background="@drawable/bg_card_menu"
-        android:clipToOutline="true">
+        android:clipToOutline="true"
+        android:paddingBottom="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,12 +81,12 @@
                 android:id="@+id/tvAutorLivro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:fontFamily="@font/fontpoppins"
                 android:gravity="center"
                 android:text="Emily Bronte"
                 android:textColor="#888888"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginTop="-8dp"/>
 
 
             <TextView
@@ -99,10 +100,9 @@
                 android:text="Clássico eterno da ficção científica, Flores para Algernon é um dos livros mais tocantes já escritos. A história de Charlie Gordon, um jovem com deficiência intelectual submetido a uma cirurgia experimental para aumentar sua inteligência, é narrada em forma de diário e transforma o leitor por completo."
                 android:textColor="#555555"
                 android:textSize="13sp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"/>
+                android:paddingStart="8dp"
+                android:paddingTop="12dp"
+                android:textAlignment="textStart"/>
 
             <TextView
                 android:id="@+id/tvVerMais"
