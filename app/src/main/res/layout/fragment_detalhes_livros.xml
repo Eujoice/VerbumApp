@@ -16,8 +16,7 @@
         android:layout_height="220dp"
         android:background="@drawable/bg_header_perfil"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/btnVoltar"
@@ -61,10 +60,10 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="28dp"
-            android:paddingTop="150dp">
+            android:paddingTop="280dp">
             <!-- paddingTop reserva espaço para a capa que flutua por cima -->
 
-            <!-- ===== TÍTULO E AUTOR ===== -->
+
             <TextView
                 android:id="@+id/tvTituloLivro"
                 android:layout_width="match_parent"
@@ -73,43 +72,37 @@
                 android:gravity="center"
                 android:text="A Biblioteca da Meia Noite"
                 android:textColor="#477740"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingTop="55dp"/>
+                />
 
             <TextView
                 android:id="@+id/tvAutorLivro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/fontpoppins"
                 android:gravity="center"
                 android:text="Emily Bronte"
                 android:textColor="#888888"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
-            <!-- ===== DIVISOR ===== -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="14dp"
-                android:background="#1A477740" />
 
-            <!-- ===== DESCRIÇÃO ===== -->
             <TextView
                 android:id="@+id/tvDescricaoLivro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fontpoppins"
-                android:lineSpacingMultiplier="1.5"
+                android:lineSpacingMultiplier="1.2"
                 android:maxLines="4"
                 android:ellipsize="end"
                 android:text="Clássico eterno da ficção científica, Flores para Algernon é um dos livros mais tocantes já escritos. A história de Charlie Gordon, um jovem com deficiência intelectual submetido a uma cirurgia experimental para aumentar sua inteligência, é narrada em forma de diário e transforma o leitor por completo."
                 android:textColor="#555555"
                 android:textSize="13sp"
                 android:paddingStart="5dp"
-                android:paddingEnd="5dp" />
+                android:paddingEnd="5dp"
+                android:paddingTop="10dp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:id="@+id/tvVerMais"
@@ -181,7 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/fontpoppins"
-                            android:text="4,0"
+                            android:text="5,0"
                             android:textColor="#477740"
                             android:textSize="22sp"
                             android:textStyle="bold"
@@ -210,8 +203,8 @@
                                 android:contentDescription="estrela" />
                             <ImageView android:layout_width="18dp" android:layout_height="18dp"
                                 android:layout_marginStart="2dp"
-                                android:src="@drawable/star_filled"
-                                android:contentDescription="estrela vazia" />
+                                android:src="@drawable/estrelaavaliacao"
+                                android:contentDescription="estrela" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -270,11 +263,12 @@
         android:layout_marginTop="100dp">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="140dp"
-            android:layout_height="220dp"
+            android:layout_width="250dp"
+            android:layout_height="350dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="12dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            >
 
             <ImageView
                 android:id="@+id/imgCapaLivro"
@@ -289,13 +283,13 @@
         <!-- Botão favorito sobreposto na borda inferior da capa -->
         <ImageView
             android:id="@+id/btnFavorito"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="70dp"
+            android:layout_height="80dp"
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="-18dp"
-            android:background="@drawable/bg_favorito_circle"
             android:padding="9dp"
             android:src="@drawable/ic_favorite_border"
+            android:elevation="16dp"
             android:contentDescription="Favoritar" />
 
     </FrameLayout>
