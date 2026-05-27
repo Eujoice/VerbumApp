@@ -7,7 +7,7 @@
 
     <action
         android:id="@+id/action_global_to_acervoFragment"
-        app:destination="@+id/fragmentAcervo"/>
+        app:destination="@+id/fragment_acervo"/>
 
     <fragment
         android:id="@+id/splashFragment"
@@ -19,7 +19,7 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_splashFragment_to_fragment_acervo"
-            app:destination="@id/fragment_acervo" />
+            app:destination="@id/fragment_acervo"/>
     </fragment>
 
     <fragment
@@ -64,6 +64,13 @@
         <action
             android:id="@+id/action_acervo_to_perfil"
             app:destination="@id/dadosPessoaisFragment" />
+        <action
+            android:id="@+id/action_fragment_acervo_to_detalhesLivroFragment"
+            app:destination="@id/detalhesLivroFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detalhesLivroFragment"
+        android:name="com.example.biblioteca.ui.DetalhesLivroFragment"
+        android:label="DetalhesLivroFragment" />
 
 </navigation>

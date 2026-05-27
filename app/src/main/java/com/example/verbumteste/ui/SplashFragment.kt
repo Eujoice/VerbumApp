@@ -42,9 +42,9 @@ class SplashFragment : Fragment() {
         try {
             val currentUser = auth.currentUser
 
-            if (currentUser != null) {
+            if (currentUser != null) { // Caso user esteja logado
                 findNavController().navigate(R.id.action_splashFragment_to_fragment_acervo)
-            } else {
+            } else { // Caso user nao esteja logado
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
             }
         } catch (e: Exception) {

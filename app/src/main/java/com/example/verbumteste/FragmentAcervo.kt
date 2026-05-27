@@ -8,12 +8,26 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.verbumteste.databinding.FragmentAcervoBinding
 
 class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
+
+    private var _binding: FragmentAcervoBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentAcervoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,6 +85,10 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
                 }
             }
         })
+        // Livro clicável
+        binding.bibliotecaMeiaNoiteCard.setOnClickListener {
+            findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment)
+        }
     }
 }
 
