@@ -6,8 +6,8 @@
     app:startDestination="@id/splashFragment">
 
     <action
-        android:id="@+id/action_global_to_loginFragment"
-        app:destination="@+id/loginFragment"/>
+        android:id="@+id/action_global_to_acervoFragment"
+        app:destination="@+id/fragmentAcervo"/>
 
     <fragment
         android:id="@+id/splashFragment"

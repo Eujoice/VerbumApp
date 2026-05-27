@@ -61,7 +61,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_bar)?.visibility = View.VISIBLE
-                        findNavController().navigate(R.id.action_global_to_loginFragment)
+                        findNavController().navigate(R.id.action_global_to_acervoFragment)
                     } else {
                         Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
                     }
