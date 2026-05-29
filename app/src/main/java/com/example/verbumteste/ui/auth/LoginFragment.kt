@@ -12,6 +12,7 @@ import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentLoginBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -19,6 +20,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var db: FirebaseFirestore // Para realizar login com o firestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,32 +35,44 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
         binding.btnLogin.setOnClickListener {
             validateData()
         }
-
-        auth = FirebaseAuth.getInstance()
     }
 
     // função para realizar login
     private fun validateData() {
-        val email = binding.editTxtEmail.text.toString().trim()
+        val matricula = binding.editTxtMatricula.text.toString().trim()
         val senha = binding.editTxtPassword.text.toString().trim()
 
-        if (email.isNotBlank()) {
+        if (matricula.isNotBlank()) {
             if (senha.isNotBlank()) {
-                loginUser(email, senha)
+                loginUser(matricula, senha)
             } else {
                 Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha o email!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Preencha a matrícula!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun loginUser(email: String, password: String) {
+    private fun loginUser(matricula: String, password: String) {
+        // val senhaCriptografada = stringToSha256(senhaDigitada)
+        // Ainda não concluído
+        db.collection("usuarios")
+            .whereEqualTo("matricula", matricula)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    Toast.makeText(requireContext(), "Matrícula não encontrada!", Toast.LENGTH_SHORT).show()
+
+                }
+            }
         try {
-            auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(matricula, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_bar)?.visibility = View.VISIBLE
