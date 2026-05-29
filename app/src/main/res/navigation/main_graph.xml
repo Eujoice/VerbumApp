@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/minhaBibliotecaFragment"
-        android:name="com.example.verbumteste.ui.MinhaBibliotecaFragment"
+        android:name="com.example.verbumteste.ui.auth.MinhaBibliotecaFragment"
         android:label="fragment_minha_biblioteca"
         tools:layout="@layout/fragment_minha_biblioteca" />
 

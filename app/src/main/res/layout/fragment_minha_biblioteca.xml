@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:id="@+id/minhaBibliotecaFragment"
-    tools:context=".ui.MinhaBibliotecaFragment">
+    tools:context=".ui.auth.MinhaBibliotecaFragment">
 
     <!-- header-->
     <LinearLayout
