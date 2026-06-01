@@ -13,6 +13,8 @@ import com.example.verbumteste.databinding.FragmentLoginBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.security.MessageDigest
+import org.mindrot.jbcrypt.BCrypt
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
@@ -21,7 +23,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var db: FirebaseFirestore // Para realizar login com o firestore
+    private lateinit var db: FirebaseFirestore  // Para realizar login com o firestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +41,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         db = FirebaseFirestore.getInstance()
 
         binding.btnLogin.setOnClickListener {
-            validateData()
+            //validateData()
+            findNavController().navigate(R.id.action_global_to_acervoFragment)
         }
     }
 
@@ -59,31 +62,43 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
-    private fun loginUser(matricula: String, password: String) {
-        // val senhaCriptografada = stringToSha256(senhaDigitada)
-        // Ainda não concluído
+    private fun loginUser(matricula: String, senhaDigitada: String) {
+         // Ainda não concluído
         db.collection("usuarios")
             .whereEqualTo("matricula", matricula)
             .get()
             .addOnSuccessListener { documents ->
                 if (documents.isEmpty) {
                     Toast.makeText(requireContext(), "Matrícula não encontrada!", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
 
+                val document = documents.documents[0]
+                val senhaBanco = document.get("senha")
+                val senhaBD = senhaBanco?.toString()?.trim()
+
+                if (!senhaBD.isNullOrEmpty()) {
+                   try {
+                        // O BCrypt.checkpw compara a senha em texto limpo com o hash complexo do banco
+                        val senhaCorreta = BCrypt.checkpw(senhaDigitada, senhaBD)
+
+                        if (senhaCorreta) {
+                            Toast.makeText(requireContext(), "Login bem sucedido", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(requireContext(), "Erro", Toast.LENGTH_SHORT).show()
+
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), "Achou erro", Toast.LENGTH_SHORT).show()
+
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Erro: O campo retornou nulo ou vazio. Objeto bruto: $senhaBanco", Toast.LENGTH_SHORT).show()
                 }
             }
-        try {
-            auth.signInWithEmailAndPassword(matricula, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_bar)?.visibility = View.VISIBLE
-                        findNavController().navigate(R.id.action_global_to_acervoFragment)
-                    } else {
-                        Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), e.message.toString(), Toast.LENGTH_SHORT).show()
-        }
+            .addOnFailureListener { exception ->
+                Toast.makeText(requireContext(), "Erro ao conectar ao banco: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     override fun onDestroyView() {
