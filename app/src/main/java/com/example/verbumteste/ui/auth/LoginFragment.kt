@@ -41,8 +41,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         db = FirebaseFirestore.getInstance()
 
         binding.btnLogin.setOnClickListener {
-            //validateData()
-            findNavController().navigate(R.id.action_global_to_acervoFragment)
+            validateData()
+            // findNavController().navigate(R.id.action_global_to_acervoFragment)
         }
     }
 
@@ -79,21 +79,26 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                 if (!senhaBD.isNullOrEmpty()) {
                    try {
+                       // Método para corrigir o início do hash
+                       val hash = if (senhaBD.startsWith("$2y$")) {
+                           senhaBD.replaceFirst("$2y$", "$2a$") // Caso o início seja "$2y$", muda para "$2a$"
+                       } else {
+                           senhaBD
+                       }
                         // O BCrypt.checkpw compara a senha em texto limpo com o hash complexo do banco
-                        val senhaCorreta = BCrypt.checkpw(senhaDigitada, senhaBD)
+                        val senhaCorreta = BCrypt.checkpw(senhaDigitada, hash)
 
                         if (senhaCorreta) {
-                            Toast.makeText(requireContext(), "Login bem sucedido", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_global_to_acervoFragment)
                         } else {
-                            Toast.makeText(requireContext(), "Erro", Toast.LENGTH_SHORT).show()
-
+                            Toast.makeText(requireContext(), "Login ou senha incorretos!", Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: Exception) {
-                        Toast.makeText(requireContext(), "Achou erro", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Erro na criptografia: ${e.message}", Toast.LENGTH_SHORT).show()
 
                     }
                 } else {
-                    Toast.makeText(requireContext(), "Erro: O campo retornou nulo ou vazio. Objeto bruto: $senhaBanco", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Erro: O campo retornou nulo ou vazio", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { exception ->
