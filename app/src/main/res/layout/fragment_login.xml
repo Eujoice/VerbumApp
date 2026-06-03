@@ -54,7 +54,7 @@
             android:id="@+id/txtViewMatricula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Identificação do usuário:"
+            android:text="Matrícula:"
             style="@style/labels"/>
         <EditText
             android:id="@+id/editTxtMatricula"
