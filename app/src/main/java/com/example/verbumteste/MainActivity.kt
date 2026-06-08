@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.verbumteste.databinding.ActivityMainBinding
 import com.example.verbumteste.databinding.FragmentMinhaBibliotecaBinding
 import com.google.firebase.Firebase
@@ -16,6 +17,7 @@ import com.google.firebase.Firebase
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
 //o main activity estava com muitos erros, pedi pro gemini tentar ajeitar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

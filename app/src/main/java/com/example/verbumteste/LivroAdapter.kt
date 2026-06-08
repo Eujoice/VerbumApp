@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.verbumteste.databinding.ItemLivroBinding
+import com.bumptech.glide.Glide
 
 class LivroAdapter(
     var livroList: List<Livro>
@@ -12,19 +13,25 @@ class LivroAdapter(
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        TODO("Not yet implemented")
+        val view = ItemLivroBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(
         holder: MyViewHolder,
         position: Int
     ) {
-        TODO("Not yet implemented")
+        val livro = livroList[position]
+        holder.binding.txtTituloLivro.text = livro.titulo
+        holder.binding.txtAutorLivro.text = livro.autor
+
+        Glide.with(holder.itemView.context)
+            .load(livro.capa)
+            //.placeholder(R.drawable.placeholder_livro)
+            .into(holder.binding.imgCapa)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = livroList.size
 
     inner class MyViewHolder(val binding: ItemLivroBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -19,6 +21,14 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
     private var _binding: FragmentAcervoBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var livroAdapter: LivroAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        initRecyclerViewLivro(getLivro())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -119,4 +129,15 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
         override fun getItemCount() = FAKE_SIZE
     }
+
+    private fun initRecyclerViewLivro(livroList: List<Livro>) {
+        livroAdapter = LivroAdapter(livroList)
+        binding.recyclerView.layoutManager = GridLayoutManager
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = livroAdapter
+    }
+
+    private fun getLivro() = listOf<Livro>(
+        Livro()
+    )
 }
