@@ -62,4 +62,8 @@ dependencies {
     // um hash "dinâmico" que muda toda vez devido a um mecanismo interno chamado Salt
     // Usado para criptografar as senhas
     implementation("org.mindrot:jbcrypt:0.4")
+
+    // dependência para as capas dos livros em url funcionarem
+    // biblioteca de carregamento de imagens
+    implementation("github.bumbletech.glide:glide:4.16.0")
 }

@@ -6,4 +6,5 @@
     <color name="color_default">#477740</color>
     <color name="dark_green">#354A2B</color>
     <color name="gray_stroke">#CBD2CB</color>
+    <color name="gray_subtitle">#666666</color>
 </resources>

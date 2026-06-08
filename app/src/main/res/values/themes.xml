@@ -67,6 +67,18 @@
         <item name="android:layout_marginRight">10dp</item>
     </style>
 
+    <!-- Estilo para autor e nome do livro -->
+    <style name="bookTitleStyle">
+        <item name="android:fontFamily">@font/fontpoppins</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="authorName">
+        <item name="android:textColor">@color/gray_subtitle</item>
+        <item name="android:fontFamily">@font/fontpoppins</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 </resources>
