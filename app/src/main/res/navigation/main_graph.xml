@@ -67,10 +67,24 @@
         <action
             android:id="@+id/action_fragment_acervo_to_detalhesLivroFragment"
             app:destination="@id/detalhesLivroFragment" />
+        <action
+            android:id="@+id/action_fragment_acervo_to_pesquisaFragment"
+            app:destination="@id/pesquisaFragment"/>
     </fragment>
     <fragment
         android:id="@+id/detalhesLivroFragment"
         android:name="com.example.biblioteca.ui.DetalhesLivroFragment"
         android:label="DetalhesLivroFragment" />
+    <fragment
+        android:id="@+id/pesquisaFragment"
+        android:name="com.example.verbumteste.PesquisaFragment"
+        android:label="fragment_pesquisa"
+        tools:layout="@layout/fragment_pesquisa">
+        <action
+            android:id="@+id/action_pesquisaFragment_to_detalhesLivroFragment"
+            app:destination="@id/detalhesLivroFragment" />
+
+    </fragment>
+
 
 </navigation>

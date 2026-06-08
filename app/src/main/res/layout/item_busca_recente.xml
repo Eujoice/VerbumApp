@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingBottom="12dp">
+
+    <!-- Capa do livro -->
+    <ImageView
+        android:id="@+id/imgCapaRecente"
+        android:layout_width="52dp"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:background="#EEEEEE" />
+
+    <!-- Chip verde com título -->
+    <TextView
+        android:id="@+id/txtTituloRecente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_chip_busca"
+        android:fontFamily="@font/fontpoppins"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+
+    <!-- Botão X -->
+    <ImageButton
+        android:id="@+id/btnRemoverRecente"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_close_recente"
+        android:contentDescription="Remover" />
+
+</LinearLayout>

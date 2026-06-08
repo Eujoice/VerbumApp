@@ -35,7 +35,11 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         val viewPager = view.findViewById<ViewPager2>(R.id.viewPagerBanners)
         val dotsLayout = view.findViewById<LinearLayout>(R.id.dotsIndicator)
 
-        val images = listOf(R.drawable.bannerpercy, R.drawable.tartarugasatelaembaixobanner, R.drawable.bibliotecadameianoitebanner)
+        val images = listOf(
+            R.drawable.bannerpercy,
+            R.drawable.tartarugasatelaembaixobanner,
+            R.drawable.bibliotecadameianoitebanner
+        )
 
         viewPager.adapter = BannerAdapter(images)
         viewPager.offscreenPageLimit = 3
@@ -52,11 +56,9 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         }
         viewPager.setPageTransformer(transformer)
 
-        // calcula o tamanho fora do apply, usando resources do Fragment
         val sizePx = (8 * resources.displayMetrics.density).toInt()
-
         val dots = arrayOfNulls<ImageView>(images.size)
-        dotsLayout.removeAllViews() // limpa bolinhas antigas caso onViewCreated seja chamado mais de uma vez
+        dotsLayout.removeAllViews()
 
         for (i in images.indices) {
             dots[i] = ImageView(requireContext()).apply {
@@ -85,31 +87,36 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
                 }
             }
         })
-        // Livro clicável
+
+        binding.searchBar.setOnClickListener {
+            findNavController().navigate(R.id.action_fragment_acervo_to_pesquisaFragment)
+        }
+
         binding.bibliotecaMeiaNoiteCard.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment)
         }
     }
-}
 
-class BannerAdapter(private val images: List<Int>) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
+    class BannerAdapter(private val images: List<Int>) :
+        RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
 
-    companion object {
-        const val FAKE_SIZE = 10_000
+        companion object {
+            const val FAKE_SIZE = 10_000
+        }
+
+        class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val imageView: ImageView = view.findViewById(R.id.imageViewBanner)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.banner_item, parent, false)
+            return BannerViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
+            holder.imageView.setImageResource(images[position % images.size])
+        }
+
+        override fun getItemCount() = FAKE_SIZE
     }
-
-    class BannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById(R.id.imageViewBanner)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BannerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.banner_item, parent, false)
-        return BannerViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
-        holder.imageView.setImageResource(images[position % images.size])
-    }
-
-    override fun getItemCount() = FAKE_SIZE
 }

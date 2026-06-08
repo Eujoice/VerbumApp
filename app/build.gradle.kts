@@ -65,5 +65,6 @@ dependencies {
 
     // dependência para as capas dos livros em url funcionarem
     // biblioteca de carregamento de imagens
-    implementation("github.bumbletech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    //corrigir pois o implementation anterior estava com erro
 }
