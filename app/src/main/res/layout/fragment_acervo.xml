@@ -50,7 +50,7 @@
                     <EditText
                         android:id="@+id/searchBar"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/pesquisa"
                         android:drawableEnd="@drawable/lupa"
@@ -62,6 +62,7 @@
                         android:focusableInTouchMode="false"
                         android:clickable="true"
                         android:cursorVisible="false"
+                        android:text="Pesquisar"
                         />
                 </LinearLayout>
 
@@ -130,6 +131,16 @@
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_livro"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingStart="20dp"
+                android:clipToPadding="false"/>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -138,11 +149,6 @@
                 android:paddingStart="20dp"
                 android:clipToPadding="false"
                 android:layout_marginTop="-6dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
 
             <!-- <LinearLayout
                 android:layout_width="wrap_content"

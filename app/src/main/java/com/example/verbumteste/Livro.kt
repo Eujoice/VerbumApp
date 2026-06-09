@@ -4,7 +4,7 @@ data class Livro(
     val ano_publicacao: String ="",
     val autor: String ="",
     val avaliacao: String ="",
-    val avaliacao_media: String ="",
+    val avaliacao_media: Double = 0.0,
     val capa: String ="",
     val colecao: String ="",
     val data_adicao: String ="",

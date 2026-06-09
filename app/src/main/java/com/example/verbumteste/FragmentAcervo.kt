@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -16,19 +17,16 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.verbumteste.databinding.FragmentAcervoBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
     private var _binding: FragmentAcervoBinding? = null
     private val binding get() = _binding!!
 
+    private val db = FirebaseFirestore.getInstance()
+
     private lateinit var livroAdapter: LivroAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initRecyclerViewLivro(getLivro())
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -105,6 +103,10 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         binding.bibliotecaMeiaNoiteCard.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment)
         }
+
+        // Chamando funções para o banco de dados buscar a lista de livros
+        initRecyclerViewLivro(emptyList())
+        buscarLivrosFirestore()
     }
 
     class BannerAdapter(private val images: List<Int>) :
@@ -132,12 +134,30 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
     private fun initRecyclerViewLivro(livroList: List<Livro>) {
         livroAdapter = LivroAdapter(livroList)
-        binding.recyclerView.layoutManager = GridLayoutManager
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = livroAdapter
     }
 
-    private fun getLivro() = listOf<Livro>(
-        Livro()
-    )
+    private fun buscarLivrosFirestore() {
+        db.collection("obras")
+            .get()
+            .addOnSuccessListener { queryDocumentSnapshots ->
+                val listaDeLivros = mutableListOf<Livro>()
+
+                for (documento in queryDocumentSnapshots) {
+                    // Converte o documento mapeando os campos para a classe Livro
+                    val livro = documento.toObject(Livro::class.java)
+                    if (livro != null) {
+                        listaDeLivros.add(livro)
+                    }
+                }
+
+                livroAdapter.atualizarLista(listaDeLivros)
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(requireContext(), "Erro ao carregar dados: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 }

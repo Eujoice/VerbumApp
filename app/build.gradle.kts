@@ -56,6 +56,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:24.1.0")
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.4")
+    implementation("com.google.firebase:firebase-firestore")
 
     // biblioteca jBcrypt
     // O Bcrypt funciona de uma forma completamente diferente do SHA-256: ele gera
