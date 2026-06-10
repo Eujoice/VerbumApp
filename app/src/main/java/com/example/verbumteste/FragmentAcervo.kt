@@ -106,7 +106,10 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
         // Chamando funções para o banco de dados buscar a lista de livros
         initRecyclerViewLivro(emptyList())
-        buscarLivrosFirestore()
+
+        view.postDelayed({
+            buscarLivrosFirestore()
+        }, 1000)
     }
 
     class BannerAdapter(private val images: List<Int>) :

@@ -25,6 +25,6 @@ data class Livro(
     val sinopse: String ="",
     val status: String ="",
     val titulo: String ="",
-    val total_avaliacoes: String ="",
+    val total_avaliacoes: Int = 0,
     val traducao: String =""
 )
