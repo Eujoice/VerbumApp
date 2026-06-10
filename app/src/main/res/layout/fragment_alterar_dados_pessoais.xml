@@ -49,7 +49,7 @@
                 android:layout_height="88dp"
                 android:background="@drawable/bg_avatar_circle"
                 android:padding="16dp"
-                android:src="@drawable/ic_perfil"
+                android:src="@drawable/ic_perfil2"
                 app:tint="#FFFFFF" />
         </FrameLayout>
 
