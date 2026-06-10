@@ -100,15 +100,11 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             findNavController().navigate(R.id.action_fragment_acervo_to_pesquisaFragment)
         }
 
-        binding.bibliotecaMeiaNoiteCard.setOnClickListener {
-            findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment)
-        }
-
         // Chamando funções para o banco de dados buscar a lista de livros
         initRecyclerViewLivro(emptyList())
-
         view.postDelayed({
-            buscarLivrosFirestore()
+            buscarLivrosFirestore("Tecnologia")
+            buscarLivrosFirestore("Fantasia")
         }, 1000)
     }
 
@@ -142,8 +138,9 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         binding.recyclerView.adapter = livroAdapter
     }
 
-    private fun buscarLivrosFirestore() {
+    private fun buscarLivrosFirestore(generoDesejado: String) {
         db.collection("obras")
+            .whereEqualTo("genero", generoDesejado)
             .get()
             .addOnSuccessListener { queryDocumentSnapshots ->
                 val listaDeLivros = mutableListOf<Livro>()

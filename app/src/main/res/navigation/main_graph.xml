@@ -51,6 +51,9 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/dadosPessoaisFragment"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_dadosPessoaisFragment_to_alterarDadosPessoaisFragment"
+            app:destination="@id/alterarDadosPessoaisFragment" />
     </fragment>
 
     <fragment
@@ -85,6 +88,10 @@
             app:destination="@id/detalhesLivroFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/alterarDadosPessoaisFragment"
+        android:name="com.example.verbumteste.AlterarDadosPessoaisFragment"
+        android:label="AlterarDadosPessoaisFragment" />
 
 
 </navigation>
