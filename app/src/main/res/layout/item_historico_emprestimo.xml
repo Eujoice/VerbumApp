@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/gray_stroke"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/imgCapaHistorico"
+                    android:layout_width="60dp"
+                    android:layout_height="85dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/gray_stroke"
+                    android:layout_marginEnd="14dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtTituloHistorico"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_green"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:text="Título do Livro – Autor" />
+
+                    <TextView
+                        android:id="@+id/txtExemplarHistorico"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/gray_subtitle"
+                        android:text="Exemplar: 00000" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="14dp"
+                android:background="#1A477740" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="11sp"
+                        android:textColor="@color/gray_subtitle"
+                        android:text="empréstimo:" />
+
+                    <TextView
+                        android:id="@+id/txtDataEmprestimo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="5dp"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_default"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_verde_suave"
+                        android:text="00/00/0000" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#1A477740"
+                    android:layout_marginHorizontal="8dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="11sp"
+                        android:textColor="@color/gray_subtitle"
+                        android:text="devolução:" />
+
+                    <TextView
+                        android:id="@+id/txtDataDevolucao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="5dp"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_default"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_chip_verde_suave"
+                        android:text="00/00/0000" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
