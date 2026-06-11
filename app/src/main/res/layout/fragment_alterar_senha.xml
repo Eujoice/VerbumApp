@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- header verde -->
+    <LinearLayout
+        android:id="@+id/headerPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="263dp"
+        android:background="#477740"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="33dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="Voltar"
+                android:src="@drawable/setavoltarpag"
+                app:tint="#FFFFFF"/>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="13dp">
+
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:background="@drawable/bg_avatar_circle"
+                android:padding="20dp"
+                android:src="@drawable/ic_cadeado"
+                app:tint="#FFFFFF" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvNomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fontpoppins"
+            android:text="Alterar Senha"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- card branco -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="176dp"
+        android:background="@drawable/bg_card_menu"
+        android:clipToOutline="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="28dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="32dp">
+
+            <!-- Título -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fontpoppins"
+                android:text="Crie uma nova senha"
+                android:textColor="#1a1a1a"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="Sua senha deve ter pelo menos 6 caracteres"
+                android:textColor="#7a9977"
+                android:textSize="12sp"/>
+
+            <!-- Senha atual -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="SENHA ATUAL"
+                android:textColor="#3a6e34"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"/>
+
+            <EditText
+                android:id="@+id/etSenhaAtual"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/bg_edit2_txt"
+                android:fontFamily="@font/fontpoppins"
+                android:hint="Digite sua senha atual"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="13sp"/>
+
+            <!-- Nova senha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="NOVA SENHA"
+                android:textColor="#3a6e34"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"/>
+
+            <EditText
+                android:id="@+id/etNovaSenha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_edit2_txt"
+                android:fontFamily="@font/fontpoppins"
+                android:hint="Digite sua nova senha"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="13sp"/>
+
+            <!-- Barra de força -->
+            <LinearLayout
+                android:id="@+id/strengthBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:baselineAligned="false">
+
+                <View
+                    android:id="@+id/seg1"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="#e0e0e0"
+                    android:backgroundTint="#e0e0e0"/>
+                <View
+                    android:id="@+id/seg2"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="#e0e0e0"/>
+                <View
+                    android:id="@+id/seg3"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="#e0e0e0"/>
+                <View
+                    android:id="@+id/seg4"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_weight="1"
+                    android:background="#e0e0e0"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvForcaSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text=""
+                android:textColor="#7a9977"
+                android:textSize="10sp"/>
+
+            <!-- Confirmar nova senha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:fontFamily="@font/fontpoppins"
+                android:text="CONFIRMAR NOVA SENHA"
+                android:textColor="#3a6e34"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.05"/>
+
+            <EditText
+                android:id="@+id/etConfirmarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_edit2_txt"
+                android:fontFamily="@font/fontpoppins"
+                android:hint="Confirme sua nova senha"
+                android:inputType="textPassword"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="13sp"/>
+
+            <!-- Dica de segurança -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_chip_verde_suave"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/ic_info"
+                    app:tint="#4a8c43"
+                    android:contentDescription="Dica"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/fontpoppins"
+                    android:text="Use letras maiúsculas, números e símbolos para uma senha mais segura."
+                    android:textColor="#3a6e34"
+                    android:textSize="11sp"
+                    android:lineSpacingMultiplier="1.4"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSalvar"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:backgroundTint="#477740"
+                android:fontFamily="@font/fontpoppins"
+                android:background="@drawable/bg_edit2_txt"
+                android:text="Salvar nova senha"
+                android:textColor="#FFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp"
+                app:iconGravity="textStart" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
