@@ -32,8 +32,7 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="Voltar"
                 android:src="@drawable/setavoltarpag"
-                app:tint="#FFFFFF" />
-
+                app:tint="#FFFFFF"/>
 
         </RelativeLayout>
 
@@ -64,7 +63,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- card branco  -->
+    <!-- card branco -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="595dp"
@@ -82,21 +81,23 @@
             android:paddingEnd="24dp"
             android:paddingBottom="32dp">
 
+            <!-- Nome de usuário -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/fontpoppins"
-                android:text="Alterar nome de usuário:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
+                android:text="Nome de usuário"
+                android:textColor="#477740"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/etNomeUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edit_txt"
+                android:background="@drawable/bg_edit2_txt"
                 android:fontFamily="@font/fontpoppins"
                 android:hint="Digite aqui seu novo nome de usuário"
                 android:inputType="textPersonName"
@@ -104,21 +105,24 @@
                 android:paddingEnd="18dp"
                 android:textSize="13sp" />
 
+            <!-- Email -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/fontpoppins"
-                android:text="Email:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
+                android:text="Email"
+                android:textColor="#477740"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edit_txt"
+                android:background="@drawable/bg_edit2_txt"
+
                 android:fontFamily="@font/fontpoppins"
                 android:hint="Digite aqui seu novo email"
                 android:inputType="textEmailAddress"
@@ -126,21 +130,23 @@
                 android:paddingEnd="18dp"
                 android:textSize="13sp" />
 
+            <!-- Telefone -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/fontpoppins"
-                android:text="Telefone:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
+                android:text="Telefone"
+                android:textColor="#477740"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/etTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edit_txt"
+                android:background="@drawable/bg_edit2_txt"
                 android:fontFamily="@font/fontpoppins"
                 android:hint="Digite aqui seu telefone"
                 android:inputType="phone"
@@ -148,65 +154,95 @@
                 android:paddingEnd="18dp"
                 android:textSize="13sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:fontFamily="@font/fontpoppins"
-                android:text="Endereço:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/etEndereco"
+            <!-- Endereço + Número lado a lado -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edit_txt"
-                android:fontFamily="@font/fontpoppins"
-                android:hint="Dige aqui seu endereço"
-                android:inputType="textPostalAddress"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
-                android:textSize="13sp" />
+                android:baselineAligned="false"
+                android:weightSum="1">
 
+                <!-- Endereço (70% da largura) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.68"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:fontFamily="@font/fontpoppins"
+                        android:text="Endereço"
+                        android:textColor="#477740"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etEndereco"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_edit2_txt"
+                        android:fontFamily="@font/fontpoppins"
+                        android:hint="Rua, bairro..."
+                        android:inputType="textPostalAddress"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Número (30% da largura) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.32"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:fontFamily="@font/fontpoppins"
+                        android:text="Número"
+                        android:textColor="#477740"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/etNumero"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:background="@drawable/bg_edit2_txt"
+                        android:fontFamily="@font/fontpoppins"
+                        android:hint="Nº"
+                        android:inputType="number"
+                        android:paddingStart="18dp"
+                        android:paddingEnd="18dp"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- CPF -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
                 android:fontFamily="@font/fontpoppins"
-                android:text="Número:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <EditText
-                android:id="@+id/etNumero"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edit_txt"
-                android:fontFamily="@font/fontpoppins"
-                android:hint="Digite aqui o nº da sua casa/apt"
-                android:inputType="number"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="6dp"
-                android:fontFamily="@font/fontpoppins"
-                android:text="CPF:"
-                android:textColor="#333333"
-                android:textSize="14sp" />
+                android:text="CPF"
+                android:textColor="#477740"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/etCpf"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginBottom="28dp"
-                android:background="@drawable/bg_edit_txt"
+                android:background="@drawable/bg_edit2_txt"
                 android:fontFamily="@font/fontpoppins"
                 android:hint="Digite aqui para alterar seu CPF"
                 android:inputType="number"
@@ -214,6 +250,7 @@
                 android:paddingEnd="18dp"
                 android:textSize="13sp" />
 
+            <!-- Botão Salvar -->
             <Button
                 android:id="@+id/btnSalvar"
                 style="@style/Widget.MaterialComponents.Button"

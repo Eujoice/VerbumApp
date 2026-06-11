@@ -69,7 +69,7 @@ class HistoricoEmprestimoFragment : Fragment() {
                 } else {
                     rvHistorico.visibility = View.VISIBLE
                     layoutVazio.visibility = View.GONE
-                    rvHistorico.adapter = HistoricoAdapter(lista)
+                    //rvHistorico.adapter = HistoricoAdapter(lista)
                 }
             }
 
