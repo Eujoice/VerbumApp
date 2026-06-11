@@ -133,9 +133,9 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
     private fun initRecyclerViewLivro(livroList: List<Livro>) {
         livroAdapter = LivroAdapter(livroList)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = livroAdapter
+        binding.recyclerGeneros.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerGeneros.setHasFixedSize(true)
+        binding.recyclerGeneros.adapter = livroAdapter
     }
 
     private fun buscarLivrosFirestore(generoDesejado: String) {
@@ -148,9 +148,18 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
                 for (documento in queryDocumentSnapshots) {
                     // Converte o documento mapeando os campos para a classe Livro
                     val livro = documento.toObject(Livro::class.java)
+
                     if (livro != null) {
                         listaDeLivros.add(livro)
                     }
+
+                    val secoes = listaDeLivros
+                        .groupBy { it.genero }
+                        .map { (genero, lista) -> GeneroSecao(genero, lista) }
+                        .sortedBy { it.genero } // ordem alfabética
+
+                    binding.recyclerGeneros.layoutManager = LinearLayoutManager(requireContext())
+                    binding.recyclerGeneros.adapter = GeneroAdapter(secoes)
                 }
 
                 livroAdapter.atualizarLista(listaDeLivros)
