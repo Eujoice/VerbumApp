@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PesquisaFragment : Fragment() {
@@ -35,10 +34,9 @@ class PesquisaFragment : Fragment() {
     private var debounceRunnable: Runnable? = null
     private val handler = android.os.Handler(android.os.Looper.getMainLooper())
 
-    // ── Adapter de Recentes ──────────────────────────────────────────────────
 
     inner class RecentesAdapter(
-        private val items: MutableList<Pair<String, String?>>, // titulo, capaUrl
+        private val items: MutableList<Pair<String, String?>>,
         private val onClick: (String) -> Unit,
         private val onRemove: (Int) -> Unit
     ) : RecyclerView.Adapter<RecentesAdapter.VH>() {
@@ -59,7 +57,6 @@ class PesquisaFragment : Fragment() {
             val (titulo, capaUrl) = items[position]
             holder.txtTitulo.text = titulo
 
-            // Carrega capa com Glide se tiver URL, senão usa placeholder
             if (!capaUrl.isNullOrEmpty()) {
                 com.bumptech.glide.Glide.with(holder.imgCapa.context)
                     .load(capaUrl)
@@ -74,7 +71,6 @@ class PesquisaFragment : Fragment() {
         }
     }
 
-    // ── Adapter de Resultados ────────────────────────────────────────────────
 
     inner class ResultadosAdapter(
         private val items: MutableList<Livro>,
@@ -105,14 +101,11 @@ class PesquisaFragment : Fragment() {
                 holder.imgCapa.setImageResource(R.drawable.brancofundo)
             }
 
-            // Oculta o botão X nos resultados (não existe remoção aqui)
             holder.itemView.findViewById<ImageButton>(R.id.btnRemoverRecente).visibility = View.GONE
-
             holder.itemView.setOnClickListener { onClick(livro) }
         }
     }
 
-    // ── Ciclo de vida ────────────────────────────────────────────────────────
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -125,24 +118,22 @@ class PesquisaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchBar       = view.findViewById(R.id.searchBarPesquisa)
-        recyclerRecentes    = view.findViewById(R.id.recyclerRecentes)
-        recyclerResultados  = view.findViewById(R.id.recyclerResultados)
-        secaoRecentes   = view.findViewById(R.id.secaoRecentes)
-        secaoResultados = view.findViewById(R.id.secaoResultados)
-        estadoVazio     = view.findViewById(R.id.estadoVazio)
+        searchBar          = view.findViewById(R.id.searchBarPesquisa)
+        recyclerRecentes   = view.findViewById(R.id.recyclerRecentes)
+        recyclerResultados = view.findViewById(R.id.recyclerResultados)
+        secaoRecentes      = view.findViewById(R.id.secaoRecentes)
+        secaoResultados    = view.findViewById(R.id.secaoResultados)
+        estadoVazio        = view.findViewById(R.id.estadoVazio)
 
         recyclerRecentes.layoutManager   = LinearLayoutManager(requireContext())
         recyclerResultados.layoutManager = LinearLayoutManager(requireContext())
 
-        // Botão voltar
         view.findViewById<ImageButton>(R.id.btnVoltar).setOnClickListener {
             findNavController().navigateUp()
         }
 
         carregarRecentes()
 
-        // Debounce de 400ms ao digitar
         searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -158,7 +149,6 @@ class PesquisaFragment : Fragment() {
             }
         })
 
-        // Busca ao pressionar a tecla de busca no teclado
         searchBar.setOnEditorActionListener { _, _, _ ->
             val query = searchBar.text.toString().trim()
             if (query.isNotEmpty()) buscarNoFirestore(query)
@@ -166,20 +156,18 @@ class PesquisaFragment : Fragment() {
         }
     }
 
-    // ── Recentes (SharedPreferences) ─────────────────────────────────────────
 
     private fun carregarRecentes() {
         val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val raw = prefs.getStringSet(KEY_RECENTES, emptySet()) ?: emptySet()
 
-        // Formato salvo: "titulo||capaUrl"
         val lista = raw.map { entry ->
             val partes = entry.split("||")
             Pair(partes.getOrElse(0) { "" }, partes.getOrNull(1))
         }.filter { it.first.isNotEmpty() }.toMutableList()
 
         if (lista.isEmpty()) {
-            mostrarRecentes() // mostra seção vazia mesmo assim
+            mostrarRecentes()
             return
         }
 
@@ -191,7 +179,6 @@ class PesquisaFragment : Fragment() {
                 buscarNoFirestore(titulo)
             },
             onRemove = { pos ->
-                val removido = lista[pos]
                 lista.removeAt(pos)
                 recyclerRecentes.adapter?.notifyItemRemoved(pos)
                 salvarRecentes(lista)
@@ -205,9 +192,8 @@ class PesquisaFragment : Fragment() {
         val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val raw = prefs.getStringSet(KEY_RECENTES, mutableSetOf())!!.toMutableSet()
         val entrada = "$titulo||${capaUrl ?: ""}"
-        raw.remove(raw.find { it.startsWith("$titulo||") }) // remove duplicata
+        raw.removeIf { it.startsWith("$titulo||") }
         raw.add(entrada)
-        // Limita a MAX_RECENTES
         val limitado = raw.toList().takeLast(MAX_RECENTES).toSet()
         prefs.edit().putStringSet(KEY_RECENTES, limitado).apply()
     }
@@ -218,35 +204,55 @@ class PesquisaFragment : Fragment() {
         prefs.edit().putStringSet(KEY_RECENTES, set).apply()
     }
 
-    // ── Busca no Firestore ───────────────────────────────────────────────────
 
     private fun buscarNoFirestore(query: String) {
-        val prefixFim = query + "\uf8ff"
 
-        db.collection("obras")
-            .whereGreaterThanOrEqualTo("titulo", query)
-            .whereLessThanOrEqualTo("titulo", prefixFim)
-            .limit(20)
-            .get()
-            .addOnSuccessListener { snapshot ->
-                val resultados = snapshot.documents.mapNotNull { doc ->
-                    doc.toObject(Livro::class.java)?.copy(id = doc.id)
-                }.toMutableList()
+        val variantes = buildSet {
+            add(query)
+            add(query.lowercase())
+            add(query.replaceFirstChar { it.uppercase() })
+        }.toList()
 
-                if (resultados.isEmpty()) {
-                    mostrarVazio()
-                } else {
-                    // Salva o primeiro resultado como recente
-                    salvarRecente(query, resultados.firstOrNull()?.capa)
-                    mostrarResultados(resultados)
-                }
-            }
-            .addOnFailureListener {
+        val resultadosMesclados = mutableMapOf<String, Livro>()
+        var consultasPendentes = variantes.size
+
+        fun onConsultaConcluida() {
+            consultasPendentes--
+            if (consultasPendentes > 0) return
+
+            val lista = resultadosMesclados.values
+                .sortedBy { it.titulo.lowercase() }
+                .toMutableList()
+            if (!isAdded) return
+
+            if (lista.isEmpty()) {
                 mostrarVazio()
+            } else {
+                salvarRecente(query, lista.firstOrNull()?.capa)
+                mostrarResultados(lista)
             }
+        }
+
+        for (variante in variantes) {
+            val fim = variante + "\uf8ff"
+            db.collection("obras")
+                .whereGreaterThanOrEqualTo("titulo", variante)
+                .whereLessThanOrEqualTo("titulo", fim)
+                .limit(20)
+                .get()
+                .addOnSuccessListener { snapshot ->
+                    snapshot.documents.forEach { doc ->
+                        val livro = doc.toObject(Livro::class.java)?.copy(id = doc.id)
+                        if (livro != null) resultadosMesclados[doc.id] = livro
+                    }
+                    onConsultaConcluida()
+                }
+                .addOnFailureListener {
+                    onConsultaConcluida()
+                }
+        }
     }
 
-    // ── Controle de visibilidade ─────────────────────────────────────────────
 
     private fun mostrarRecentes() {
         secaoRecentes.visibility   = View.VISIBLE
@@ -262,7 +268,6 @@ class PesquisaFragment : Fragment() {
         recyclerResultados.adapter = ResultadosAdapter(
             items = resultados,
             onClick = { livro ->
-                // Navega para detalhes passando o ID do livro
                 val bundle = Bundle().apply { putString("livroId", livro.id) }
                 findNavController().navigate(
                     R.id.action_pesquisaFragment_to_detalhesLivroFragment,

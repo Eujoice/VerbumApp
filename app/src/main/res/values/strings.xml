@@ -1,8 +1,90 @@
 <resources>
     <string name="app_name">Verbum</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- Login -->
+    <string name="btn_voltar_desc">Voltar</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="ver_mais">Ver mais</string>
+    <string name="acervo_titulo">Acervo</string>
+    <string name="acervo_hint_pesquisar">Pesquisar</string>
+
     <string name="login_matricula">Matrícula:</string>
+    <string name="login_hint_matricula">Insira sua matrícula</string>
+    <string name="login_senha">Senha:</string>
+    <string name="login_hint_senha">Insira sua senha</string>
+    <string name="login_btn_acessar">Acessar</string>
+    <string name="login_esqueceu_senha">Esqueceu a senha?</string>
+
+    <string name="alterar_dados_nome_usuario_label">Nome de usuário</string>
+    <string name="alterar_dados_hint_nome">Digite aqui seu novo nome de usuário</string>
+    <string name="alterar_dados_email_label">Email</string>
+    <string name="alterar_dados_hint_email">Digite aqui seu novo email</string>
+    <string name="alterar_dados_telefone_label">Telefone</string>
+    <string name="alterar_dados_hint_telefone">Digite aqui seu telefone</string>
+    <string name="alterar_dados_endereco_label">Endereço</string>
+    <string name="alterar_dados_hint_endereco">Rua, bairro...</string>
+    <string name="alterar_dados_numero_label">Número</string>
+    <string name="alterar_dados_hint_numero">Nº</string>
+    <string name="alterar_dados_cpf_label">CPF</string>
+    <string name="alterar_dados_hint_cpf">Digite aqui para alterar seu CPF</string>
+
+    <string name="alterar_senha_titulo">Alterar Senha</string>
+    <string name="alterar_senha_subtitulo">Crie uma nova senha</string>
+    <string name="alterar_senha_descricao">Sua senha deve ter pelo menos 6 caracteres</string>
+    <string name="alterar_senha_label_atual">SENHA ATUAL</string>
+    <string name="alterar_senha_hint_atual">Digite sua senha atual</string>
+    <string name="alterar_senha_label_nova">NOVA SENHA</string>
+    <string name="alterar_senha_hint_nova">Digite sua nova senha</string>
+    <string name="alterar_senha_label_confirmar">CONFIRMAR NOVA SENHA</string>
+    <string name="alterar_senha_hint_confirmar">Confirme sua nova senha</string>
+    <string name="alterar_senha_dica">Use letras maiúsculas, números e símbolos para uma senha mais segura.</string>
+    <string name="alterar_senha_dica_desc">Dica</string>
+    <string name="alterar_senha_btn_salvar">Salvar nova senha</string>
+
+    <string name="perfil_nome_exemplo">Nome Exemplo</string>
+    <string name="perfil_stat_lidos">Lidos</string>
+    <string name="perfil_stat_reservas">Reservas</string>
+    <string name="perfil_stat_avaliacoes">Avaliações</string>
+    <string name="perfil_btn_pagar_multas">Pagar Multas</string>
+    <string name="perfil_btn_historico">Histórico</string>
+    <string name="perfil_btn_dados_pessoais">Dados Pessoais</string>
+    <string name="perfil_btn_favoritos">Favoritos e Avaliações</string>
+    <string name="perfil_btn_alterar_senha">Alterar Senha</string>
+    <string name="perfil_btn_sair">Sair</string>
+
+    <string name="detalhes_titulo_header">Detalhes</string>
+    <string name="detalhes_capa_desc">Capa do livro</string>
+    <string name="detalhes_label_nota">Nota</string>
+    <string name="detalhes_label_estrela">estrela</string>
+    <string name="detalhes_label_status_disponivel">Status: disponível</string>
+    <string name="detalhes_btn_avaliar">Avaliar</string>
+    <string name="detalhes_btn_reservar">Reservar</string>
+    <string name="detalhes_btn_favoritar_desc">Favoritar</string>
+
+    <string name="favoritos_titulo">Favoritos</string>
+    <string name="favoritos_remover_desc">Remover dos favoritos</string>
+    <string name="favoritos_tag_classicos">Clássicos</string>
+    <string name="favoritos_tag_brasileiros">Brasileiros</string>
+    <string name="favoritos_tag_internacionais">Internacionais</string>
+
+    <string name="historico_titulo">Histórico de empréstimo</string>
+    <string name="historico_vazio">Nenhum empréstimo encontrado.</string>
+    <string name="historico_label_emprestimo">empréstimo:</string>
+    <string name="historico_label_devolucao">devolução:</string>
+    <string name="historico_placeholder_titulo">Título do Livro – Autor</string>
+    <string name="historico_placeholder_exemplar">Exemplar: 00000</string>
+    <string name="historico_placeholder_data">00/00/0000</string>
+
+    <string name="minha_biblioteca_titulo">Minha Biblioteca</string>
+    <string name="minha_biblioteca_content_desc">Menu da Minha Biblioteca</string>
+    <string name="minha_biblioteca_titulos_reservados">Títulos Reservados</string>
+    <string name="minha_biblioteca_titulos_pendentes">Títulos Pendentes</string>
+    <string name="minha_biblioteca_status_pendente">Pendente</string>
+
+    <string name="pesquisa_buscas_recentes">Buscas Recentes</string>
+    <string name="pesquisa_resultados">Resultados</string>
+    <string name="pesquisa_vazio">Nenhum resultado encontrado</string>
+    <string name="pesquisa_remover_recente_desc">Remover</string>
+
+    <string name="genero_ver_mais">Ver mais</string>
+
 </resources>
