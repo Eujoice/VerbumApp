@@ -23,8 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
-                android:clipToPadding="false"
-                >
+                android:clipToPadding="false">
 
                 <LinearLayout
                     android:id="@+id/headerContainer"
@@ -62,7 +61,7 @@
                         android:focusableInTouchMode="false"
                         android:clickable="true"
                         android:cursorVisible="false"
-                        android:text="Pesquisar"
+                        android:hint="Pesquisar"
                         />
                 </LinearLayout>
 
@@ -93,46 +92,14 @@
 
             </LinearLayout>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtNomeGenero1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="8dp"
-                android:gravity="center_vertical"
-                >
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="5dp"
-                    android:fontFamily="@font/fontpoppins"
-                    android:text="Populares"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#477740"
-                    />
-
-                <TextView
-                    android:id="@+id/VerMaisPopulares"
-                    android:layout_width="87dp"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/seta"
-                    android:fontFamily="@font/fontpoppins"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:text="Ver mais"
-                    android:textColor="#477740"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+                style="@style/GenreTitle"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerGeneros"
+                android:id="@+id/recyclerGenero1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -141,44 +108,30 @@
                 android:paddingStart="20dp"
                 android:clipToPadding="false"/>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/txtNomeGenero2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/GenreTitle"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerGenero2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="24dp"
-                android:paddingBottom="8dp"
-                android:gravity="center_vertical">
+                tools:listitem="@layout/item_livro"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingStart="20dp"
+                android:clipToPadding="false"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="5dp"
-                    android:text="Ficção"
-                    android:fontFamily="@font/fontpoppins"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#477740"/>
-
-                <TextView
-                    android:id="@+id/VerMaisFiccao"
-                    android:layout_width="87dp"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/seta"
-                    android:fontFamily="@font/fontpoppins"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:text="Ver mais"
-                    android:textColor="#477740"
-                    android:textSize="12sp" />
-
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtNomeGenero3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/GenreTitle"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView1"
+                android:id="@+id/recyclerGenero3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -188,42 +141,7 @@
                 android:clipToPadding="false"/>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="8dp"
-                android:gravity="center_vertical"
-                >
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="5dp"
-                    android:fontFamily="@font/fontpoppins"
-                    android:text="Contos"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#477740"
-                    />
-
-                <TextView
-                    android:id="@+id/VerMaisContos"
-                    android:layout_width="87dp"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/seta"
-                    android:fontFamily="@font/fontpoppins"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:text="Ver mais"
-                    android:textColor="#477740"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
 
 
 

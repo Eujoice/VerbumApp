@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -100,12 +101,7 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             findNavController().navigate(R.id.action_fragment_acervo_to_pesquisaFragment)
         }
 
-        // Chamando funções para o banco de dados buscar a lista de livros
-        initRecyclerViewLivro(emptyList())
-        view.postDelayed({
-            buscarLivrosFirestore("Tecnologia")
-            buscarLivrosFirestore("Fantasia")
-        }, 1000)
+        carregarLivros()
     }
 
     class BannerAdapter(private val images: List<Int>) :
@@ -131,42 +127,49 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         override fun getItemCount() = FAKE_SIZE
     }
 
-    private fun initRecyclerViewLivro(livroList: List<Livro>) {
-        livroAdapter = LivroAdapter(livroList)
-        binding.recyclerGeneros.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerGeneros.setHasFixedSize(true)
-        binding.recyclerGeneros.adapter = livroAdapter
-    }
-
-    private fun buscarLivrosFirestore(generoDesejado: String) {
+    private fun carregarLivros() {
         db.collection("obras")
-            .whereEqualTo("genero", generoDesejado)
             .get()
-            .addOnSuccessListener { queryDocumentSnapshots ->
-                val listaDeLivros = mutableListOf<Livro>()
+            .addOnSuccessListener { result ->
 
-                for (documento in queryDocumentSnapshots) {
-                    // Converte o documento mapeando os campos para a classe Livro
-                    val livro = documento.toObject(Livro::class.java)
+                val livros = result.documents.mapNotNull { it.toObject(Livro::class.java) }
 
-                    if (livro != null) {
-                        listaDeLivros.add(livro)
-                    }
+                val porGenero = livros.groupBy { it.genero }
+                val generos = porGenero.keys.toSortedSet().toList() // oredem alfabética e transformação em lista
 
-                    val secoes = listaDeLivros
-                        .groupBy { it.genero }
-                        .map { (genero, lista) -> GeneroSecao(genero, lista) }
-                        .sortedBy { it.genero } // ordem alfabética
+                configurarRecycler(binding.recyclerGenero1, binding.txtNomeGenero1, generos.getOrNull(0), porGenero)
+                configurarRecycler(binding.recyclerGenero2, binding.txtNomeGenero2, generos.getOrNull(1), porGenero)
+                configurarRecycler(binding.recyclerGenero3, binding.txtNomeGenero3, generos.getOrNull(2), porGenero)
 
-                    binding.recyclerGeneros.layoutManager = LinearLayoutManager(requireContext())
-                    binding.recyclerGeneros.adapter = GeneroAdapter(secoes)
-                }
-
-                livroAdapter.atualizarLista(listaDeLivros)
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(requireContext(), "Erro ao carregar dados: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun configurarRecycler(
+        recycler: RecyclerView,
+        titulo: TextView,
+        genero: String?,
+        porGenero: Map<String, List<Livro>>
+    ) {
+        val livros = porGenero[genero]
+        if(genero == null || livros.isNullOrEmpty()) {
+            titulo.visibility = View.GONE
+            recycler.visibility = View.GONE
+            return
+        }
+
+        titulo.text = genero
+        titulo.visibility = View.VISIBLE
+        recycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recycler.adapter = LivroAdapter(livros)
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

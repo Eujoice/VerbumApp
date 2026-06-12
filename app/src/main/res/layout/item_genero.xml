@@ -11,12 +11,24 @@
         android:layout_height="wrap_content"
         style="@style/GenreTitle"/>
 
+    <TextView
+        android:id="@+id/VerMaisPopulares"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/seta"
+        android:fontFamily="@font/fontpoppins"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:text="Ver mais"
+        android:textColor="@color/color_default"
+        android:textSize="12sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLivrosHorizontal"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:orientation="horizontal"
         android:clipToPadding="false"
-        android:paddingHorizontal="12dp"/>
+        android:paddingHorizontal="8dp"/>
 
 </LinearLayout>

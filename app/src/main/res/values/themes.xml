@@ -85,7 +85,9 @@
         <item name="android:maxLines">1</item>
     </style>
 
+    <!-- Estilo para título do gênero do livro -->
     <style name="GenreTitle">
+        <item name="android:paddingStart">12dp</item>
         <item name="android:fontFamily">@font/fontpoppins</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">22sp</item>
