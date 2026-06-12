@@ -54,6 +54,12 @@
         <action
             android:id="@+id/action_dadosPessoaisFragment_to_alterarDadosPessoaisFragment"
             app:destination="@id/alterarDadosPessoaisFragment" />
+        <action
+            android:id="@+id/action_dadosPessoaisFragment_to_favoritosFragment"
+            app:destination="@id/favoritosFragment" />
+        <action
+            android:id="@+id/action_dadosPessoaisFragment_to_historicoEmprestimoFragment"
+            app:destination="@id/historicoEmprestimoFragment" />
     </fragment>
 
     <fragment
@@ -92,6 +98,15 @@
         android:id="@+id/alterarDadosPessoaisFragment"
         android:name="com.example.verbumteste.AlterarDadosPessoaisFragment"
         android:label="AlterarDadosPessoaisFragment" />
+    <fragment
+        android:id="@+id/favoritosFragment"
+        android:name="com.example.verbumteste.FavoritosFragment"
+        android:label="FavoritosFragment" />
+    <fragment
+        android:id="@+id/historicoEmprestimoFragment"
+        android:name="com.example.verbumteste.HistoricoEmprestimoFragment"
+        android:label="fragment_historico_emprestimo"
+        tools:layout="@layout/fragment_historico_emprestimo" />
 
 
 </navigation>

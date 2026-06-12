@@ -33,6 +33,18 @@ class DadosPessoaisFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         initListeners()
+
+        binding.btnDadosPessoais.setOnClickListener {
+            findNavController().navigate(R.id.action_dadosPessoaisFragment_to_alterarDadosPessoaisFragment)
+        }
+
+        binding.btnFavoritos.setOnClickListener {
+            findNavController().navigate(R.id.action_dadosPessoaisFragment_to_favoritosFragment)
+        }
+
+        binding.btnHistorico.setOnClickListener {
+            findNavController().navigate(R.id.action_dadosPessoaisFragment_to_historicoEmprestimoFragment)
+        }
     }
 
     private fun initListeners() {
