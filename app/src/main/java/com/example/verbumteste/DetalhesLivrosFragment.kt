@@ -9,20 +9,43 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.verbumteste.Livro
 import com.example.verbumteste.R
+import com.example.verbumteste.databinding.FragmentDetalhesLivrosBinding
 
 class DetalhesLivroFragment : Fragment() {
+
+    private var _binding: FragmentDetalhesLivrosBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_detalhes_livros, container, false)
+    ): View {
+        _binding = FragmentDetalhesLivrosBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Para poder receber os dados dos livros
+        val livro = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getSerializable("CHAVE_LIVRO", Livro::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            arguments?.getSerializable("CHAVE_LIVRO") as? Livro
+        }
+
+        livro?.let {
+            Glide.with(this).load(it.capa).into(binding.imgCapaLivro)
+            binding.tvTituloLivro.text = it.titulo
+            binding.tvAutorLivro.text = it.autor
+            binding.tvDescricaoLivro.text = it.sinopse
+        }
+
         val tvDescricao = view.findViewById<TextView>(R.id.tvDescricaoLivro)
         val tvVerMais   = view.findViewById<TextView>(R.id.tvVerMais)
         var expandido   = false
@@ -68,5 +91,10 @@ class DetalhesLivroFragment : Fragment() {
             // TODO: Chamar API de reserva
             Toast.makeText(requireContext(), "Livro reservado com sucesso! ✅", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

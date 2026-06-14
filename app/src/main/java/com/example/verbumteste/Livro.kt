@@ -1,5 +1,7 @@
 package com.example.verbumteste
 
+import kotlinx.serialization.Serializable
+
 data class Livro(
     val ano_publicacao: String ="",
     val autor: String ="",
@@ -27,4 +29,4 @@ data class Livro(
     val titulo: String ="",
     val total_avaliacoes: Int = 0,
     val traducao: String =""
-)
+) : java.io.Serializable // Permite o envio dos dados da classe Livro

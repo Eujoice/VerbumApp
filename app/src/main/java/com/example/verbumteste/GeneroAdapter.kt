@@ -2,14 +2,13 @@ package com.example.verbumteste
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.verbumteste.databinding.ItemGeneroBinding
-import com.example.verbumteste.databinding.ItemLivroBinding
 
 class GeneroAdapter (
-    private val secoes: List<GeneroSecao>
+    private val secoes: List<GeneroSecao>,
+    private val onItemClick: (Livro) -> Unit
 ) : RecyclerView.Adapter<GeneroAdapter.GeneroViewHolder>() {
 
     inner class GeneroViewHolder(val binding: ItemGeneroBinding) :
@@ -28,7 +27,7 @@ class GeneroAdapter (
 
         holder.binding.txtNomeGenero.text = secao.genero
 
-        val livroAdapter = LivroAdapter(secao.livros)
+        val livroAdapter = LivroAdapter(secao.livros, onItemClick)
 
         holder.binding.recyclerLivrosHorizontal.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

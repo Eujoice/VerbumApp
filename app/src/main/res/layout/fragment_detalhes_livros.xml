@@ -69,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/fontpoppins"
                     android:gravity="center"
-                    android:text="A Biblioteca da Meia Noite"
                     android:textColor="#477740"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -81,7 +80,6 @@
                     android:layout_marginTop="-8dp"
                     android:fontFamily="@font/fontpoppins"
                     android:gravity="center"
-                    android:text="Emily Bronte"
                     android:textColor="#888888"
                     android:textSize="16sp" />
 
@@ -95,9 +93,6 @@
                     android:maxLines="4"
                     android:paddingStart="8dp"
                     android:paddingTop="12dp"
-                    android:text="Aos 35 anos, Nora Seed é uma mulher cheia de talentos e poucas conquistas. Arrependida das escolhas que fez no passado, ela vive se perguntando o que poderia ter acontecido caso tivesse vivido de maneira diferente. Após ser demitida e seu gato ser atropelado, Nora vê pouco sentido em sua existência e decide colocar um ponto final em tudo. Porém, quando se vê na Biblioteca da Meia-Noite, Nora ganha uma oportunidade única de viver todas as vidas que poderia ter vivido.
-
-Neste lugar entre a vida e a morte, e graças à ajuda de uma velha amiga, Nora pode, finalmente, se mudar para a Austrália, reatar relacionamentos antigos – ou começar outros –, ser uma estrela do rock, uma glaciologista, uma nadadora olímpica... enfim, as opções são infinitas. Mas será que alguma dessas outras vidas é realmente melhor do que a que ela já tem?"
                     android:textAlignment="textStart"
                     android:textColor="#555555"
                     android:textSize="13sp" />
@@ -276,8 +271,7 @@ Neste lugar entre a vida e a morte, e graças à ajuda de uma velha amiga, Nora 
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="Capa do livro"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bibliotecadetalhes" />
+                        android:scaleType="fitXY"/>
 
                 </androidx.cardview.widget.CardView>
 

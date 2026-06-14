@@ -7,7 +7,8 @@ import com.example.verbumteste.databinding.ItemLivroBinding
 import com.bumptech.glide.Glide
 
 class LivroAdapter(
-    var livroList: List<Livro>
+    var livroList: List<Livro>,
+    private val onItemClick: (Livro) -> Unit
 ): RecyclerView.Adapter<LivroAdapter.MyViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,14 +30,14 @@ class LivroAdapter(
             .load(livro.capa)
             //.placeholder(R.drawable.placeholder_livro)
             .into(holder.binding.imgCapa)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(livro)
+        }
+
     }
 
     override fun getItemCount() = livroList.size
-
-    fun atualizarLista(novaLista: List<Livro>) {
-        this.livroList = novaLista
-        notifyDataSetChanged() // Avisa o RecyclerView para se redesenhar com os novos dados
-    }
 
     inner class MyViewHolder(val binding: ItemLivroBinding) : RecyclerView.ViewHolder(binding.root)
 }

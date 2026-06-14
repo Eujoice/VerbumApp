@@ -78,6 +78,7 @@
             android:layout_height="48dp"
             android:hint="Insira sua senha"
             style="@style/editTextStyle"
+            android:inputType="textPassword"
             />
 
         <com.google.android.material.button.MaterialButton

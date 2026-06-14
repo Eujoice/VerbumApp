@@ -163,7 +163,13 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         titulo.text = genero
         titulo.visibility = View.VISIBLE
         recycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycler.adapter = LivroAdapter(livros)
+
+        recycler.adapter = LivroAdapter(livros, onItemClick = { livroClicado ->
+            val bundle = Bundle().apply {
+                putSerializable("CHAVE_LIVRO", livroClicado)
+            }
+            findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment, bundle)
+        })
 
     }
 
