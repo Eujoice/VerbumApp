@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
 
     <!-- Header verde -->
     <LinearLayout
@@ -51,7 +51,8 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/bg_card_menu"
         android:clipToOutline="true"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:contentDescription="@string/content_description_favoritos">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,8 +63,33 @@
             android:paddingTop="28dp"
             android:paddingBottom="32dp">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recyclerFavoritos"
+                tools:listitem="@layout/item_livro"
+                android:visibility="visible"
+                android:padding="8dp"
+                android:clipToPadding="false"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/estadoVazio"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_subtitle"
+                    android:text="@string/nenhum_favorito"/>
+            </LinearLayout>
+
             <!-- Card: Dom Quixote -->
-            <androidx.cardview.widget.CardView
+            <!--<androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
@@ -142,7 +168,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Card: Crime e Castigo -->
+            &lt;!&ndash; Card: Crime e Castigo &ndash;&gt;
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -222,7 +248,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Card: A Hora da Estrela -->
+            &lt;!&ndash; Card: A Hora da Estrela &ndash;&gt;
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -302,7 +328,7 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Card: Laranja Mecânica -->
+            &lt;!&ndash; Card: Laranja Mecânica &ndash;&gt;
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -380,7 +406,7 @@
                         app:tint="#D04F6B" />
 
                 </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

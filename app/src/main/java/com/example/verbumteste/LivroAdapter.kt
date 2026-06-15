@@ -37,6 +37,11 @@ class LivroAdapter(
 
     }
 
+    fun atualizarLista(novaLista: List<Livro>) {
+        this.livroList = novaLista
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount() = livroList.size
 
     inner class MyViewHolder(val binding: ItemLivroBinding) : RecyclerView.ViewHolder(binding.root)

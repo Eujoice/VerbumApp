@@ -101,7 +101,11 @@
     <fragment
         android:id="@+id/favoritosFragment"
         android:name="com.example.verbumteste.FavoritosFragment"
-        android:label="FavoritosFragment" />
+        android:label="FavoritosFragment" >
+        <action
+            android:id="@+id/action_favoritosFragment_to_detalhesLivroFragment"
+            app:destination="@id/detalhesLivroFragment" />
+    </fragment>
     <fragment
         android:id="@+id/historicoEmprestimoFragment"
         android:name="com.example.verbumteste.HistoricoEmprestimoFragment"
