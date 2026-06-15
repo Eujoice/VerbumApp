@@ -99,7 +99,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_edit2_txt"
                 android:fontFamily="@font/fontpoppins"
-                android:text="@string/alterar_dados_hint_nome"
+                android:hint="@string/alterar_dados_hint_nome"
                 android:inputType="textPersonName"
                 android:paddingStart="18dp"
                 android:paddingEnd="18dp"

@@ -61,7 +61,7 @@
                         android:focusableInTouchMode="false"
                         android:clickable="true"
                         android:cursorVisible="false"
-                        android:text="@string/acervo_hint_pesquisar"
+                        android:hint="@string/acervo_hint_pesquisar"
                         />
                 </LinearLayout>
 
