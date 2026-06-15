@@ -105,9 +105,9 @@ class DetalhesLivroFragment : Fragment() {
                 } else {
                     // Cria documento com os dados requeridos para favoritar
                     val dadosFavorito = hashMapOf(
-                        "idLivro" to currentLivro.id,
-                        "idUsuario" to idUsuarioLogado,
-                        "dataSalva" to com.google.firebase.firestore.FieldValue.serverTimestamp()
+                        "obra_id" to currentLivro.id,
+                        "usuario_id" to idUsuarioLogado,
+                        "salvo_em" to com.google.firebase.firestore.FieldValue.serverTimestamp()
                     )
 
                     db.collection("favoritos")

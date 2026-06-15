@@ -60,18 +60,32 @@ class FavoritosFragment : Fragment() {
     private fun buscarLivrosFavoritados() {
         db.collection("favoritos")
             .whereEqualTo("usuario_id", idUsuarioLogado)
-            .get()
-            .addOnSuccessListener { snapshots ->
-                val idsLivros = snapshots.documents.mapNotNull { it.getString("obra_id") }
+            .addSnapshotListener { snapshot, error ->
 
-                if (idsLivros.isEmpty()) {
+                if (error != null) {
+                    Toast.makeText(requireContext(), "Erro ao atualizar favoritos", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
+
+                if (snapshot == null || snapshot.isEmpty) {
                     binding.estadoVazio.visibility = View.VISIBLE
                     binding.recyclerFavoritos.visibility = View.GONE
-                    return@addOnSuccessListener
+                    livroAdapter.atualizarLista(emptyList())
+                    return@addSnapshotListener
+                }
+
+
+                val idsDosLivros = snapshot.documents.mapNotNull { it.getString("obra_id") }
+
+                if (idsDosLivros.isEmpty()) {
+                    binding.estadoVazio.visibility = View.VISIBLE
+                    binding.recyclerFavoritos.visibility = View.GONE
+                    livroAdapter.atualizarLista(emptyList())
+                    return@addSnapshotListener
                 }
 
                 db.collection("obras")
-                    .whereIn(FieldPath.documentId(), idsLivros)
+                    .whereIn(FieldPath.documentId(), idsDosLivros)
                     .get()
                     .addOnSuccessListener { resultadoLivros ->
                         val listaDeLivros = resultadoLivros.documents.mapNotNull { doc ->
@@ -83,22 +97,18 @@ class FavoritosFragment : Fragment() {
                             binding.recyclerFavoritos.visibility = View.VISIBLE
 
                             listaDeLivros.sortBy { it.titulo }
-
                             livroAdapter.atualizarLista(listaDeLivros)
                         } else {
                             binding.estadoVazio.visibility = View.VISIBLE
                             binding.recyclerFavoritos.visibility = View.GONE
                         }
                     }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Erro ao carregar dados dos livros: ${e.message}",
-                            Toast.LENGTH_SHORT).show()
+                    .addOnFailureListener {
+                        Toast.makeText(requireContext(), "Erro ao carregar dados", Toast.LENGTH_SHORT).show()
                     }
             }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Erro ao buscar favoritos: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
