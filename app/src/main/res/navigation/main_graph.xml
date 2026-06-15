@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_dadosPessoaisFragment_to_historicoEmprestimoFragment"
             app:destination="@id/historicoEmprestimoFragment" />
+        <action
+            android:id="@+id/action_dadosPessoaisFragment_to_alterarSenhaFragment"
+            app:destination="@id/alterarSenhaFragment" />
     </fragment>
 
     <fragment
@@ -111,6 +114,10 @@
         android:name="com.example.verbumteste.HistoricoEmprestimoFragment"
         android:label="fragment_historico_emprestimo"
         tools:layout="@layout/fragment_historico_emprestimo" />
+    <fragment
+        android:id="@+id/alterarSenhaFragment"
+        android:name="com.example.verbumteste.AlterarSenhaFragment"
+        android:label="AlterarSenhaFragment" />
 
 
 </navigation>

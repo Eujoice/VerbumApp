@@ -43,6 +43,10 @@ class DadosPessoaisFragment : Fragment() {
         binding.btnHistorico.setOnClickListener {
             findNavController().navigate(R.id.action_dadosPessoaisFragment_to_historicoEmprestimoFragment)
         }
+
+        binding.btnAlterarSenha.setOnClickListener {
+            findNavController().navigate(R.id.action_dadosPessoaisFragment_to_alterarSenhaFragment)
+        }
     }
 
     private fun initListeners() {
