@@ -10,13 +10,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentDadosPessoaisBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DadosPessoaisFragment : Fragment() {
 
     private var _binding: FragmentDadosPessoaisBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore // Logout com firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,9 +29,6 @@ class DadosPessoaisFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // aproveitei para inicializar o Firebase corretamente, senão daria erro ao rodar
-        auth = FirebaseAuth.getInstance()
 
         initListeners()
 
@@ -53,7 +51,8 @@ class DadosPessoaisFragment : Fragment() {
             builder.setTitle("Sair")
             builder.setMessage("Tem certeza que deseja sair?")
             builder.setPositiveButton("Sim") { dialog, _ ->
-                auth.signOut()
+                val prefs = requireContext().getSharedPreferences("verbum_prefs", android.content.Context.MODE_PRIVATE)
+                prefs.edit().remove("id_usuario_logado").apply() // Logout
                 findNavController().navigate(R.id.action_dadosPessoaisFragment_to_loginFragment)
                 dialog.dismiss()
             }

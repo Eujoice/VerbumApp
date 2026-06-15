@@ -87,4 +87,8 @@
 
     <string name="genero_ver_mais">Ver mais</string>
 
+    <string name="realize_login">Faça login!</string>
+    <string name="remove_favoritos">Removido dos favoritos</string>
+    <string name="add_aos_favoritos">Adicionado aos favoritos!</string>
+
 </resources>

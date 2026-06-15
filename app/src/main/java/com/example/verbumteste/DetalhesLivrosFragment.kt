@@ -1,5 +1,6 @@
 package com.example.biblioteca.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,18 @@ import com.bumptech.glide.Glide
 import com.example.verbumteste.Livro
 import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentDetalhesLivrosBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DetalhesLivroFragment : Fragment() {
 
     private var _binding: FragmentDetalhesLivrosBinding? = null
     private val binding get() = _binding!!
+
+    private val db = FirebaseFirestore.getInstance()
+
+    private var idDocumentoFavorito: String? = null
+    private var idUsuarioLogado: String = ""
+    private var isFavorito = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +39,16 @@ class DetalhesLivroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Captura o ID do usuário logado
+        val prefs = requireContext().getSharedPreferences("verbum_prefs", Context.MODE_PRIVATE)
+        idUsuarioLogado = prefs.getString("id_usuario_logado", "") ?: ""
+
+        if (idUsuarioLogado.isEmpty()) {
+            Toast.makeText(requireContext(), R.string.realize_login, Toast.LENGTH_SHORT).show()
+        }
+
+        val btnFavorito = view.findViewById<ImageView>(R.id.btnFavorito)
+
         // Para poder receber os dados dos livros
         val livro = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             arguments?.getSerializable("CHAVE_LIVRO", Livro::class.java)
@@ -39,12 +57,76 @@ class DetalhesLivroFragment : Fragment() {
             arguments?.getSerializable("CHAVE_LIVRO") as? Livro
         }
 
-        livro?.let {
-            Glide.with(this).load(it.capa).into(binding.imgCapaLivro)
-            binding.tvTituloLivro.text = it.titulo
-            binding.tvAutorLivro.text = it.autor
-            binding.tvDescricaoLivro.text = it.sinopse
+        livro?.let { currentLivro ->
+            Glide.with(this).load(currentLivro.capa).into(binding.imgCapaLivro)
+            binding.tvTituloLivro.text = currentLivro.titulo
+            binding.tvAutorLivro.text = currentLivro.autor
+            binding.tvDescricaoLivro.text = currentLivro.sinopse
+
+            if (idUsuarioLogado.isNotEmpty()) {
+                // Busca se este livro já foi favoritado por este usuário
+                db.collection("favoritos")
+                    .whereEqualTo("usuario_id", idUsuarioLogado)
+                    .whereEqualTo("obra_id", currentLivro.id)
+                    .get()
+                    .addOnSuccessListener { snapshots ->
+                        if (!snapshots.isEmpty) {
+                            isFavorito = true
+                            idDocumentoFavorito = snapshots.documents.first().id
+                            // Precisa mudar o coração de vazio para cheio aqui
+                        } else {
+                            isFavorito = false
+                            idDocumentoFavorito = null
+                            btnFavorito.setImageResource(R.drawable.ic_favorite_border)
+                        }
+                    }
+            }
+
+            btnFavorito.setOnClickListener {
+                if (idUsuarioLogado.isEmpty()) {
+                    // Se o user não estiver logado, pede-se para que ele logue para poder favoritar
+                    Toast.makeText(requireContext(), R.string.realize_login, Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                if (isFavorito && idDocumentoFavorito != null) {
+                    // Remove documento usando o id salvo
+                    db.collection("favoritos").document(idDocumentoFavorito!!)
+                        .delete()
+                        .addOnSuccessListener {
+                            isFavorito = false
+                            idDocumentoFavorito = null
+                            // Mudança do ícone de coração do cheio para o vazio
+                            Toast.makeText(requireContext(), R.string.remove_favoritos, Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Erro ao remover: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    // Cria documento com os dados requeridos para favoritar
+                    val dadosFavorito = hashMapOf(
+                        "idLivro" to currentLivro.id,
+                        "idUsuario" to idUsuarioLogado,
+                        "dataSalva" to com.google.firebase.firestore.FieldValue.serverTimestamp()
+                    )
+
+                    db.collection("favoritos")
+                        .add(dadosFavorito)
+                        .addOnSuccessListener { documentReference ->
+                            isFavorito = true
+                            idDocumentoFavorito = documentReference.id
+                            // Mudar o coração de vazio para cheio
+                            Toast.makeText(requireContext(), R.string.add_aos_favoritos, Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Erro ao favoritar: ${e.message}", Toast.LENGTH_SHORT).show()
+                            android.util.Log.e("ERRO_FAVORITOS", "Falha ao enviar:", e)
+                        }
+                }
+            }
         }
+
+
 
         val tvDescricao = view.findViewById<TextView>(R.id.tvDescricaoLivro)
         val tvVerMais   = view.findViewById<TextView>(R.id.tvVerMais)
@@ -64,20 +146,6 @@ class DetalhesLivroFragment : Fragment() {
         // Botão Voltar
         view.findViewById<ImageView>(R.id.btnVoltar).setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
-        }
-
-        // Botão Favoritar
-        val btnFavorito = view.findViewById<ImageView>(R.id.btnFavorito)
-        var isFavorito = false
-        btnFavorito.setOnClickListener {
-            isFavorito = !isFavorito
-            if (isFavorito) {
-                btnFavorito.setImageResource(R.drawable.ic_favorite_border)
-                Toast.makeText(requireContext(), "Adicionado aos favoritos!", Toast.LENGTH_SHORT).show()
-            } else {
-                btnFavorito.setImageResource(R.drawable.ic_favorite_border)
-                Toast.makeText(requireContext(), "Removido dos favoritos.", Toast.LENGTH_SHORT).show()
-            }
         }
 
         // Botão Avaliar

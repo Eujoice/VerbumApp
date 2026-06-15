@@ -268,7 +268,9 @@ class PesquisaFragment : Fragment() {
         recyclerResultados.adapter = ResultadosAdapter(
             items = resultados,
             onClick = { livro ->
-                val bundle = Bundle().apply { putString("livroId", livro.id) }
+                val bundle = Bundle().apply {
+                    putSerializable("CHAVE_LIVRO", livro)
+                }
                 findNavController().navigate(
                     R.id.action_pesquisaFragment_to_detalhesLivroFragment,
                     bundle
