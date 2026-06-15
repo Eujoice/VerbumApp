@@ -45,7 +45,7 @@
                     android:letterSpacing="0.02"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:text="Detalhes"
+                    android:text="@string/detalhes_titulo_header"
                     android:textColor="#FFFFFF"
                     android:textSize="26sp"
                     android:textStyle="bold" />
@@ -104,7 +104,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/fontpoppins"
                     android:paddingStart="5dp"
-                    android:text="Ver mais"
+                    android:text="@string/ver_mais"
                     android:textColor="#477740"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/fontpoppins"
-                        android:text="Status: disponível"
+                        android:text="@string/detalhes_label_status_disponivel"
                         android:textColor="#6F7880"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -215,7 +215,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/fontpoppins"
                             android:paddingStart="3dp"
-                            android:text="Nota"
+                            android:text="@string/detalhes_label_nota"
                             android:textColor="#888888"
                             android:textSize="11sp"
                             android:gravity="center" />
@@ -231,7 +231,7 @@
                         android:paddingTop="10dp"
                         android:paddingEnd="24dp"
                         android:paddingBottom="10dp"
-                        android:text="Avaliar"
+                        android:text="@string/detalhes_btn_avaliar"
                         android:textColor="#6F7880"
                         android:textSize="13sp"
                         android:textStyle="bold"
@@ -245,7 +245,7 @@
                     android:backgroundTint="#477740"
                     android:fontFamily="@font/fontpoppins"
                     android:letterSpacing="0.04"
-                    android:text="Reservar"
+                    android:text="@string/detalhes_btn_reservar"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"

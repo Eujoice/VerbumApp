@@ -75,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Buscas Recentes"
+                    android:text="@string/pesquisa_buscas_recentes"
                     android:fontFamily="@font/fontpoppins"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -106,7 +106,7 @@
                     android:id="@+id/txtResultadosLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Resultados"
+                    android:text="@string/pesquisa_resultados"
                     android:fontFamily="@font/fontpoppins"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -135,7 +135,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nenhum resultado encontrado"
+                    android:text="@string/pesquisa_vazio"
                     android:fontFamily="@font/fontpoppins"
                     android:textSize="15sp"
                     android:textColor="#999999" />

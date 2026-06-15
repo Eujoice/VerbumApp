@@ -35,7 +35,7 @@
             android:layout_marginBottom="14dp"
             android:fontFamily="@font/fontpoppins"
             android:gravity="center"
-            android:text="Minha Biblioteca"
+            android:text="@string/minha_biblioteca_titulo"
             android:textColor="#FFFFFF"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/fontpoppins"
-                    android:text="Títulos Reservados"
+                    android:text="@string/minha_biblioteca_titulos_reservados"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#477740" />
@@ -305,7 +305,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/fontpoppins"
-                    android:text="Títulos Pendentes"
+                    android:text="@string/minha_biblioteca_titulos_pendentes"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#477740" />

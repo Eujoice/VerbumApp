@@ -54,14 +54,14 @@
             android:id="@+id/txtViewMatricula"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matrícula:"
+            android:text="@string/login_matricula"
             style="@style/labels"/>
         <EditText
             android:id="@+id/editTxtMatricula"
             android:paddingLeft="14dp"
             android:layout_width="270dp"
             android:layout_height="48dp"
-            android:hint="Insira sua matrícula"
+            android:text="@string/login_hint_matricula"
             style="@style/editTextStyle"
             android:layout_marginBottom="20dp"/>
 
@@ -69,14 +69,14 @@
             android:id="@+id/txtViewPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Senha:"
+            android:text="@string/login_senha"
             style="@style/labels"/>
         <EditText
             android:id="@+id/editTxtPassword"
             android:paddingLeft="14dp"
             android:layout_width="270dp"
             android:layout_height="48dp"
-            android:hint="Insira sua senha"
+            android:text="@string/login_hint_senha"
             style="@style/editTextStyle"
             android:inputType="textPassword"
             />
@@ -85,7 +85,7 @@
             android:id="@+id/btn_login"
             android:layout_width="190dp"
             android:layout_height="48dp"
-            android:text="Acessar"
+            android:text="@string/login_btn_acessar"
             android:background="@drawable/bg_btn"
             app:backgroundTint="@null"
             style="@style/labels"
@@ -98,7 +98,7 @@
             android:id="@+id/txtViewPasswordReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esqueceu a senha?"
+            android:text="@string/login_esqueceu_senha"
             style="@style/labels"
             android:textSize="14sp"
             android:layout_gravity="center"
