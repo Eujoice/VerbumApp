@@ -55,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="172dp"
+                android:layout_marginBottom="168dp"
                 android:background="@drawable/bg_card_menu"
                 android:clipToOutline="true"
                 android:orientation="vertical"
@@ -249,8 +250,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:cornerRadius="12dp"
-                    android:paddingBottom="18dp"/>
+                    app:cornerRadius="12dp"/>
 
             </LinearLayout>
 
@@ -283,7 +283,7 @@
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="-18dp"
                     android:padding="9dp"
-                    android:src="@drawable/ic_favorite_border"
+                    android:src="@drawable/ic_favorito_border"
                     android:elevation="16dp"
                     android:contentDescription="Favoritar" />
 

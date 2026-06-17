@@ -73,11 +73,11 @@ class DetalhesLivroFragment : Fragment() {
                         if (!snapshots.isEmpty) {
                             isFavorito = true
                             idDocumentoFavorito = snapshots.documents.first().id
-                            // Precisa mudar o coração de vazio para cheio aqui
+                            btnFavorito.setImageResource(R.drawable.ic_favorito)
                         } else {
                             isFavorito = false
                             idDocumentoFavorito = null
-                            btnFavorito.setImageResource(R.drawable.ic_favorite_border)
+                            btnFavorito.setImageResource(R.drawable.ic_favorito_border)
                         }
                     }
             }
@@ -96,7 +96,7 @@ class DetalhesLivroFragment : Fragment() {
                         .addOnSuccessListener {
                             isFavorito = false
                             idDocumentoFavorito = null
-                            // Mudança do ícone de coração do cheio para o vazio
+                            btnFavorito.setImageResource(R.drawable.ic_favorito_border)
                             Toast.makeText(requireContext(), R.string.remove_favoritos, Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->
@@ -115,7 +115,7 @@ class DetalhesLivroFragment : Fragment() {
                         .addOnSuccessListener { documentReference ->
                             isFavorito = true
                             idDocumentoFavorito = documentReference.id
-                            // Mudar o coração de vazio para cheio
+                            btnFavorito.setImageResource(R.drawable.ic_favorito)
                             Toast.makeText(requireContext(), R.string.add_aos_favoritos, Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->

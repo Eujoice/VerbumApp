@@ -8,4 +8,5 @@
     <color name="gray_stroke">#CBD2CB</color>
     <color name="gray_subtitle">#666666</color>
     <color name="card_bg_color">#F4F6F1</color>
+    <color name="heart_red">#FA6DA9</color>
 </resources>
