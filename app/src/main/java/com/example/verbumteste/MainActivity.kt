@@ -2,48 +2,51 @@ package com.example.verbumteste
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.verbumteste.databinding.ActivityMainBinding
-import com.example.verbumteste.databinding.FragmentMinhaBibliotecaBinding
-import com.google.firebase.Firebase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-//o main activity estava com muitos erros, pedi pro gemini tentar ajeitar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // 1. Configuração do ViewBinding
+        // 1. Edge-to-edge ANTES do setContentView
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        // 2. ViewBinding — apenas UMA chamada ao setContentView
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 2. Esconde a Status Bar (Modo imersivo)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        // 3. Esconde a Status Bar (modo imersivo)
         val controller = WindowInsetsControllerCompat(window, window.decorView)
         controller.hide(WindowInsetsCompat.Type.statusBars())
-        controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        controller.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
 
-        // 3. Configuração do Navigation Component
+        // 4. Inset da BottomNav para não ser cortada pela navigation bar do sistema
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavBar) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, 0, 0, systemBars.bottom)
+            insets
+        }
+
+        // 5. Navigation Component
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // 4. Conecta a BottomNav ao NavController
-        // Importante: Os IDs no seu menu (XML) devem ser IGUAIS aos IDs no seu nav_graph.xml
+        // 6. Conecta BottomNav ao NavController
         binding.bottomNavBar.setupWithNavController(navController)
 
-
-        // 5. Controle de visibilidade da BottomNav
+        // 7. Controle de visibilidade da BottomNav por destino
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashFragment, R.id.loginFragment -> {
@@ -54,7 +57,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
-
 }

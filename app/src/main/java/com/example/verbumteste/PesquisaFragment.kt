@@ -11,6 +11,8 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -127,6 +129,19 @@ class PesquisaFragment : Fragment() {
 
         recyclerRecentes.layoutManager   = LinearLayoutManager(requireContext())
         recyclerResultados.layoutManager = LinearLayoutManager(requireContext())
+
+        // Aplica o inset do topo apenas no header para respeitar câmera/notch
+        val header = view.findViewById<LinearLayout>(R.id.headerPesquisa)
+        ViewCompat.setOnApplyWindowInsetsListener(header) { v, insets ->
+            val statusBar = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            v.setPadding(
+                v.paddingLeft,
+                statusBar.top + 20.dpToPx(),
+                v.paddingRight,
+                v.paddingBottom
+            )
+            insets
+        }
 
         view.findViewById<ImageButton>(R.id.btnVoltar).setOnClickListener {
             findNavController().navigateUp()
@@ -284,6 +299,9 @@ class PesquisaFragment : Fragment() {
         secaoResultados.visibility = View.GONE
         estadoVazio.visibility     = View.VISIBLE
     }
+
+    private fun Int.dpToPx(): Int =
+        (this * resources.displayMetrics.density).toInt()
 
     override fun onDestroyView() {
         super.onDestroyView()

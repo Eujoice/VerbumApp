@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Header verde com campo de busca -->
+    <!-- header verde com campo de busca -->
     <LinearLayout
         android:id="@+id/headerPesquisa"
         android:layout_width="match_parent"
