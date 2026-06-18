@@ -1,6 +1,7 @@
 package com.example.biblioteca.ui
 
 import android.content.Context
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.verbumteste.Livro
 import com.example.verbumteste.R
 import com.example.verbumteste.databinding.FragmentDetalhesLivrosBinding
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 class DetalhesLivroFragment : Fragment() {
 

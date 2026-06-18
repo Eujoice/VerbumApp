@@ -16,22 +16,12 @@
         android:orientation="vertical"
         android:paddingTop="0dp">
 
-        <ImageView
-            android:id="@+id/btnVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/setavoltarpag"
-            app:tint="#FFFFFF" />
-
         <!-- Avatar com borda branca -->
         <FrameLayout
             android:layout_width="84dp"
             android:layout_height="84dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="60dp">
 
             <ImageView
                 android:id="@+id/imgAvatar"

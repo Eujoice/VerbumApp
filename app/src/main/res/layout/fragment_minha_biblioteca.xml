@@ -18,21 +18,11 @@
         android:paddingTop="16dp"
         android:background="@drawable/bg_header_perfil">
 
-        <ImageView
-            android:id="@+id/btnVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/setavoltarpag"
-            app:tint="#FFFFFF" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/fontpoppins"
             android:gravity="center"
             android:text="@string/minha_biblioteca_titulo"
