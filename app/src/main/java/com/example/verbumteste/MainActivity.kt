@@ -37,6 +37,20 @@ class MainActivity : AppCompatActivity() {
             view.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
+// ta um pequeno erro, a parte de cima tá branca
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+
+            val statusBarInsets = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+            val cutoutInsets = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
+
+
+            val topPadding = maxOf(statusBarInsets.top, cutoutInsets.top)
+
+
+            view.setPadding(view.paddingLeft, topPadding, view.paddingRight, view.paddingBottom)
+
+            insets
+        }
 
         // 5. Navigation Component
         val navHostFragment = supportFragmentManager

@@ -75,11 +75,11 @@ class DetalhesLivroFragment : Fragment() {
                         if (!snapshots.isEmpty) {
                             isFavorito = true
                             idDocumentoFavorito = snapshots.documents.first().id
-                            btnFavorito.setImageResource(R.drawable.ic_favorito)
+                            btnFavorito.setImageResource(R.drawable.group49)
                         } else {
                             isFavorito = false
                             idDocumentoFavorito = null
-                            btnFavorito.setImageResource(R.drawable.ic_favorito_border)
+                            btnFavorito.setImageResource(R.drawable.component4)
                         }
                     }
             }
@@ -98,7 +98,7 @@ class DetalhesLivroFragment : Fragment() {
                         .addOnSuccessListener {
                             isFavorito = false
                             idDocumentoFavorito = null
-                            btnFavorito.setImageResource(R.drawable.ic_favorito_border)
+                            btnFavorito.setImageResource(R.drawable.component4)
                             Toast.makeText(requireContext(), R.string.remove_favoritos, Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->
@@ -117,7 +117,7 @@ class DetalhesLivroFragment : Fragment() {
                         .addOnSuccessListener { documentReference ->
                             isFavorito = true
                             idDocumentoFavorito = documentReference.id
-                            btnFavorito.setImageResource(R.drawable.ic_favorito)
+                            btnFavorito.setImageResource(R.drawable.group49)
                             Toast.makeText(requireContext(), R.string.add_aos_favoritos, Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { e ->

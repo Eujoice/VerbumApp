@@ -283,7 +283,7 @@
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="-18dp"
                     android:padding="9dp"
-                    android:src="@drawable/ic_favorito_border"
+                    android:src="@drawable/component4"
                     android:elevation="16dp"
                     android:contentDescription="Favoritar" />
 
