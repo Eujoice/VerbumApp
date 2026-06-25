@@ -92,11 +92,28 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtNomeGenero1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/GenreTitle"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtNomeGenero1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/GenreTitle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                    android:drawableTint="@color/color_default"
+                    android:text="@string/genero_ver_mais"
+                    android:drawablePadding="12dp"
+                    style="@style/VerMaisGenero"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerGenero1"
@@ -108,11 +125,29 @@
                 android:paddingStart="18dp"
                 android:clipToPadding="false"/>
 
-            <TextView
-                android:id="@+id/txtNomeGenero2"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/GenreTitle"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtNomeGenero2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/GenreTitle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                    android:drawableTint="@color/color_default"
+                    android:text="@string/genero_ver_mais"
+                    android:drawablePadding="12dp"
+                    style="@style/VerMaisGenero"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerGenero2"
@@ -124,11 +159,28 @@
                 android:paddingStart="18dp"
                 android:clipToPadding="false"/>
 
-            <TextView
-                android:id="@+id/txtNomeGenero3"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/GenreTitle"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtNomeGenero3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/GenreTitle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                    android:drawableTint="@color/color_default"
+                    android:text="@string/genero_ver_mais"
+                    android:drawablePadding="12dp"
+                    style="@style/VerMaisGenero"/>
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerGenero3"
