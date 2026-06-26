@@ -79,7 +79,7 @@
                     android:textColor="#477740" />
 
                 <!-- contador titulos-->
-                <TextView
+                <!--<TextView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:gravity="center"
@@ -88,7 +88,7 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:fontFamily="@font/fontpoppins"
-                    android:background="@drawable/bg_badge_verde" />
+                    android:background="@drawable/bg_badge_verde" />-->
 
             </LinearLayout>
 
@@ -99,6 +99,16 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="16dp"
                 android:background="#1A477740" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerReservados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_livro"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:paddingStart="18dp"
+                android:clipToPadding="false"/>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
