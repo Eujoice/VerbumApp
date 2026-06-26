@@ -10,22 +10,24 @@
     <LinearLayout
         android:id="@+id/headerPesquisa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="124dp"
         android:background="@drawable/header_background"
         android:orientation="horizontal"
         android:paddingStart="12dp"
         android:paddingEnd="16dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="16dp"
-        android:gravity="center_vertical"
+        android:paddingBottom="24dp"
+        android:paddingTop="24dp"
+        android:gravity="bottom"
+        android:minHeight="110dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/btnVoltar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/setavoltarpag"
             android:contentDescription="Voltar" />
@@ -33,7 +35,7 @@
         <EditText
             android:id="@+id/searchBarPesquisa"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:background="@drawable/pesquisa"
@@ -43,7 +45,9 @@
             android:imeOptions="actionSearch"
             android:singleLine="true"
             android:paddingStart="15dp"
-            android:paddingEnd="15dp" />
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/dark_green"/>
 
     </LinearLayout>
 
