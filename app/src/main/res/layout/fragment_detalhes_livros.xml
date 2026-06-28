@@ -117,7 +117,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="#1A477740" />
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -137,7 +137,7 @@
                         android:textColor="#6F7880"
                         android:textSize="15sp"
                         android:textStyle="bold" />
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -238,6 +238,19 @@
                         android:textStyle="bold"
                         />
                 </LinearLayout>
+
+
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDisponibilidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    app:chipCornerRadius="100dp"
+                    app:closeIconVisible="false"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
 
                 <Button
                     android:id="@+id/btnReservar"

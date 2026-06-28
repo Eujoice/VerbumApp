@@ -65,6 +65,10 @@
     <string name="favoritos_tag_classicos">Clássicos</string>
     <string name="favoritos_tag_brasileiros">Brasileiros</string>
     <string name="favoritos_tag_internacionais">Internacionais</string>
+    <string name="content_description_favoritos">Lista de favoritos</string>
+    <string name="nenhum_favorito">Nenhum livro favorito</string>
+    <string name="remove_favoritos">Removido dos favoritos</string>
+    <string name="add_aos_favoritos">Adicionado aos favoritos!</string>
 
     <string name="historico_titulo">Histórico de empréstimo</string>
     <string name="historico_vazio">Nenhum empréstimo encontrado.</string>
@@ -79,6 +83,7 @@
     <string name="minha_biblioteca_titulos_reservados">Títulos Reservados</string>
     <string name="minha_biblioteca_titulos_pendentes">Títulos Pendentes</string>
     <string name="minha_biblioteca_status_pendente">Pendente</string>
+    <string name="minha_biblioteca_nenhum_reservado">Nenhum livro reservado</string>
 
     <string name="pesquisa_buscas_recentes">Buscas Recentes</string>
     <string name="pesquisa_resultados">Resultados</string>
@@ -88,10 +93,7 @@
     <string name="genero_ver_mais">Ver mais</string>
 
     <string name="realize_login">Faça login!</string>
-    <string name="remove_favoritos">Removido dos favoritos</string>
-    <string name="add_aos_favoritos">Adicionado aos favoritos!</string>
-
-    <string name="content_description_favoritos">Lista de favoritos</string>
-    <string name="nenhum_favorito">Nenhum livro favorito</string>
+    
+    <string name="erro_carregar_dados">Erro ao carregar dados</string>
 
 </resources>

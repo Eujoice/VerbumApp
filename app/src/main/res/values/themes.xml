@@ -101,7 +101,14 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/color_default</item>
         <item name="android:paddingEnd">18dp</item>
-
+    </style>
+    
+    <style name="ChipDisponibilidade" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="android:fontFamily">@font/fontpoppins</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/disponivel_green</item>
+        <item name="chipBackgroundColor">@color/gray_subtitle</item>
     </style>
 
 </resources>

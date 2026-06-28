@@ -64,6 +64,7 @@ class DetalhesLivroFragment : Fragment() {
             binding.tvTituloLivro.text = currentLivro.titulo
             binding.tvAutorLivro.text = currentLivro.autor
             binding.tvDescricaoLivro.text = currentLivro.sinopse
+            binding.chipDisponibilidade.text = currentLivro.status
 
             if (idUsuarioLogado.isNotEmpty()) {
                 // Busca se este livro já foi favoritado por este usuário

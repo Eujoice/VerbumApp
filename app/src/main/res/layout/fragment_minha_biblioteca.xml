@@ -108,178 +108,24 @@
                 tools:listitem="@layout/item_livro"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:paddingStart="18dp"
-                android:clipToPadding="false"/>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none"
                 android:clipToPadding="false"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
-                android:paddingBottom="8dp">
+                android:visibility="visible"/>
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/estadoVazio"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="top">
-
-                    <!-- livro 1 -->
-                    <LinearLayout
-                        android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginEnd="14dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="105dp"
-                            android:layout_height="155dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
-
-                            <ImageView
-                                android:id="@+id/imgBook1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="Crime e Castigo"
-                                android:background="@drawable/crime"
-                                android:scaleType="fitXY" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Crime e Castigo"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textColor="#477740"
-                            android:fontFamily="@font/fontpoppins"
-                            android:textStyle="bold"
-                            android:maxLines="2"
-                            android:ellipsize="end" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Dostoiévski"
-                            android:textAlignment="center"
-                            android:textSize="11sp"
-                            android:textColor="#888888"
-                            android:fontFamily="@font/fontpoppins"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
-                    </LinearLayout>
-
-                    <!-- livro 2 -->
-                    <LinearLayout
-                        android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginEnd="14dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="105dp"
-                            android:layout_height="155dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
-
-                            <ImageView
-                                android:id="@+id/imgBook2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="O cavaleiro"
-                                android:src="@drawable/ocavaleiro"
-                                android:scaleType="fitXY" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="O Cavaleiro dos Sete Reinos"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textColor="#477740"
-                            android:fontFamily="@font/fontpoppins"
-                            android:textStyle="bold"
-                            android:maxLines="2"
-                            android:ellipsize="end" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="G.R.R. Martin"
-                            android:textAlignment="center"
-                            android:textSize="11sp"
-                            android:textColor="#888888"
-                            android:fontFamily="@font/fontpoppins"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
-                    </LinearLayout>
-
-                    <!-- livro 3 -->
-                    <LinearLayout
-                        android:layout_width="115dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_marginEnd="14dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="105dp"
-                            android:layout_height="155dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
-
-                            <ImageView
-                                android:id="@+id/imgBook3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/apaciente"
-                                android:contentDescription="A paciente silenciosa"
-                                android:scaleType="fitXY" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="A Paciente Silenciosa"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textColor="#477740"
-                            android:fontFamily="@font/fontpoppins"
-                            android:textStyle="bold"
-                            android:maxLines="2"
-                            android:ellipsize="end" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Alex Michaelides"
-                            android:textAlignment="center"
-                            android:textSize="11sp"
-                            android:textColor="#888888"
-                            android:fontFamily="@font/fontpoppins"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </HorizontalScrollView>
+                    android:textColor="@color/gray_subtitle"
+                    android:text="@string/minha_biblioteca_nenhum_reservado"/>
+            </LinearLayout>
 
             <!-- espaçador entre seções -->
             <View
@@ -309,17 +155,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#477740" />
-
-                <TextView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/fontpoppins"
-                    android:background="@drawable/bg_badge_verde" />
 
             </LinearLayout>
 

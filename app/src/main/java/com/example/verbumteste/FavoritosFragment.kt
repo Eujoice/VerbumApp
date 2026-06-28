@@ -36,6 +36,7 @@ class FavoritosFragment : Fragment() {
 
         binding.recyclerFavoritos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        // Inicializa o adaptador para que com o clique abra os detalhes
         livroAdapter = LivroAdapter(mutableListOf(), onItemClick = { livroClicado ->
             val bundle = Bundle().apply {
                 putSerializable("CHAVE_LIVRO", livroClicado)
@@ -75,6 +76,7 @@ class FavoritosFragment : Fragment() {
                 }
 
 
+                // Mapeia os campos "obra_id" da coleção favoritos deste usuário
                 val idsDosLivros = snapshot.documents.mapNotNull { it.getString("obra_id") }
 
                 if (idsDosLivros.isEmpty()) {
