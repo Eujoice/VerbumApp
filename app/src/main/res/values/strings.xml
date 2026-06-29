@@ -55,7 +55,7 @@
     <string name="detalhes_capa_desc">Capa do livro</string>
     <string name="detalhes_label_nota">Nota</string>
     <string name="detalhes_label_estrela">estrela</string>
-    <string name="detalhes_label_status_disponivel">Status: disponível</string>
+    <string name="detalhes_disponibilidade_desc">Disponibilidade</string>
     <string name="detalhes_btn_avaliar">Avaliar</string>
     <string name="detalhes_btn_reservar">Reservar</string>
     <string name="detalhes_btn_favoritar_desc">Favoritar</string>

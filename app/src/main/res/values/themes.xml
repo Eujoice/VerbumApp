@@ -105,10 +105,12 @@
     
     <style name="ChipDisponibilidade" parent="Widget.MaterialComponents.Chip.Action">
         <item name="android:fontFamily">@font/fontpoppins</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/disponivel_green</item>
-        <item name="chipBackgroundColor">@color/gray_subtitle</item>
+        <item name="android:textColor">@color/gray_subtitle</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">@color/gray_subtitle</item>
     </style>
 
 </resources>

@@ -17,18 +17,23 @@ class DadosPessoaisFragment : Fragment() {
     private var _binding: FragmentDadosPessoaisBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var db: FirebaseFirestore // Logout com firestore
+    private val db = FirebaseFirestore.getInstance() // Logout com firestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View { // removi o '?' aqui porque o View Binding garante que a View não será nula
         _binding = FragmentDadosPessoaisBinding.inflate(inflater, container, false)
-        return binding.root // agora sim, sem erro e parou de show
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val prefs = requireContext().getSharedPreferences("verbum_prefs", android.content.Context.MODE_PRIVATE)
+        val nomeUsuarioLogado = prefs.getString("nome_usuario_logado", "Usuário") ?: "Usuário"
+
+        binding.tvNomeUsuario.text = nomeUsuarioLogado
 
         initListeners()
 
@@ -47,6 +52,7 @@ class DadosPessoaisFragment : Fragment() {
         binding.btnAlterarSenha.setOnClickListener {
             findNavController().navigate(R.id.action_dadosPessoaisFragment_to_alterarSenhaFragment)
         }
+
     }
 
     private fun initListeners() {

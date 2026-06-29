@@ -239,8 +239,6 @@
                         />
                 </LinearLayout>
 
-
-
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipDisponibilidade"
                     android:layout_width="wrap_content"
@@ -249,7 +247,9 @@
                     app:chipCornerRadius="100dp"
                     app:closeIconVisible="false"
                     android:clickable="false"
-                    android:focusable="false"/>
+                    android:focusable="false"
+                    android:contentDescription="@string/detalhes_disponibilidade_desc"
+                    style="@style/ChipDisponibilidade"/>
 
 
                 <Button

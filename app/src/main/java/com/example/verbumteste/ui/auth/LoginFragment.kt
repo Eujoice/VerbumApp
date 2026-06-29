@@ -21,7 +21,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private var _binding : FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-
     private lateinit var db: FirebaseFirestore  // Para realizar login com o firestore
 
     override fun onCreateView(
@@ -96,8 +95,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                         if (senhaCorreta) {
                             val idUsuario = document.id
+                            val nomeUsuario = document.getString("nome") ?: "Usuário"
+
                             val prefs = requireContext().getSharedPreferences("verbum_prefs", android.content.Context.MODE_PRIVATE)
-                            prefs.edit().putString("id_usuario_logado", idUsuario).apply()
+                            prefs.edit().apply {
+                                putString("id_usuario_logado", idUsuario)
+                                putString("nome_usuario_logado", nomeUsuario)
+                                apply()
+                            }
                             findNavController().navigate(R.id.action_global_to_acervoFragment)
                         } else {
                             Toast.makeText(requireContext(), "Login ou senha incorretos!", Toast.LENGTH_SHORT).show()
