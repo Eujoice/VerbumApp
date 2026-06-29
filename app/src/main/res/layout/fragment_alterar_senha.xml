@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/fontpoppins"
                 android:text="@string/alterar_senha_subtitulo"
-                android:textColor="#1a1a1a"
+                android:textColor="@color/dark_green"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
@@ -262,11 +262,11 @@
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:backgroundTint="#477740"
+                android:backgroundTint="@color/color_default"
                 android:fontFamily="@font/fontpoppins"
                 android:text="@string/alterar_senha_btn_salvar"
-                android:textColor="#FFFF"
-                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:cornerRadius="14dp"
                 app:iconGravity="textStart" />

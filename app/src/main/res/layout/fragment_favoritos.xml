@@ -67,9 +67,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/recyclerFavoritos"
-                tools:listitem="@layout/item_livro"
                 android:visibility="visible"
                 android:padding="8dp"
+                tools:listitem="@layout/item_livro"
                 android:clipToPadding="false"/>
 
             <LinearLayout

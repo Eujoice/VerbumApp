@@ -50,7 +50,42 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             R.drawable.bibliotecadameianoitebanner
         )
 
-        viewPager.adapter = BannerAdapter(images)
+        // ======== MUDANÇA A PARTIR DAQUI
+        viewPager.adapter = BannerAdapter(images) { realIndex ->
+            // Executa uma busca do livro no Firestore baseado no banner clicado
+            val tituloLivroBuscado = when (realIndex) {
+                0 -> "Percy Jackson e os Olimpianos: O Ladrão de Raios" // Substitua pelo título EXATO do livro no banco
+                1 -> "Tartarugas Até Lá Embaixo"
+                2 -> "A Biblioteca da Meia-Noite"
+                else -> ""
+            }
+
+            if (tituloLivroBuscado.isNotEmpty()) {
+                db.collection("obras")
+                    .whereEqualTo("titulo", tituloLivroBuscado)
+                    .get()
+                    .addOnSuccessListener { result ->
+                        if (!result.isEmpty) {
+                            val livroClicado = result.documents.first().toObject(Livro::class.java)
+
+                            if (livroClicado != null) {
+                                // Abre a tela de detalhes exatamente igual você faz na recycler
+                                val bundle = Bundle().apply {
+                                    putSerializable("CHAVE_LIVRO", livroClicado)
+                                }
+                                findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment, bundle)
+                            }
+                        } else {
+                            Toast.makeText(requireContext(), "Livro do banner não encontrado!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(requireContext(), "Erro ao carregar livro do banner", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+
+        // ======= TERMINA AQUI
         viewPager.offscreenPageLimit = 3
 
         val startPosition = (BannerAdapter.FAKE_SIZE / 2) - (BannerAdapter.FAKE_SIZE / 2 % images.size)
@@ -104,8 +139,9 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         carregarLivros()
     }
 
-    class BannerAdapter(private val images: List<Int>) :
-        RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
+    class BannerAdapter(private val images: List<Int>,
+                        private val onBannerClick: (Int) -> Unit
+    ) : RecyclerView.Adapter<BannerAdapter.BannerViewHolder>() {
 
         companion object {
             const val FAKE_SIZE = 10_000
@@ -121,7 +157,12 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         }
 
         override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
-            holder.imageView.setImageResource(images[position % images.size])
+            val realIndex = position % images.size
+            holder.imageView.setImageResource(images[realIndex])
+
+            holder.itemView.setOnClickListener {
+                onBannerClick(realIndex)
+            }
         }
 
         override fun getItemCount() = FAKE_SIZE
