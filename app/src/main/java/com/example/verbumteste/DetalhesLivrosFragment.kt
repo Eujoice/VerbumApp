@@ -31,6 +31,9 @@ class DetalhesLivroFragment : Fragment() {
     private var idUsuarioLogado: String = ""
     private var isFavorito = false
 
+    private var idDocumentoReserva: String? = null
+    private var isReservado = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -133,42 +136,88 @@ class DetalhesLivroFragment : Fragment() {
                 }
             }
 
+                if (idUsuarioLogado.isNotEmpty()) {
+                    db.collection("reservas")
+                        .whereEqualTo("matricula", idUsuarioLogado)
+                        .whereEqualTo("obra_id", currentLivro.id)
+                        .get()
+                        .addOnSuccessListener { snapshots ->
+                            if (snapshots!= null && !snapshots.isEmpty) {
+                                // Usuário já reservou esse livro
+                                isReservado = true
+                                idDocumentoReserva = snapshots.documents.first().id
+                                binding.btnReservar.text = "Cancelar Reserva"
+                            } else {
+                                // Não há reserva ativa
+                                isReservado = false
+                                idDocumentoReserva = null
+
+                                binding.btnReservar.text = "Reservar"
+                            }
+                        }
+                }
+
             binding.btnReservar.setOnClickListener {
                 if (idUsuarioLogado.isEmpty()) {
                     Toast.makeText(requireContext(), R.style.CustomAlertDialog.toString(), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
 
-                val nomeUsuario = prefs.getString("nome_usuario_logado", "Usuário") ?: ""
-
-                val tipoReserva = if (currentLivro.status == ("Disponível")) {
-                    "Direta"
-                } else {
-                    "Fila"
-                }
-
-                val dadosReserva = hashMapOf(
-                    "data_reserva" to com.google.firebase.firestore.FieldValue.serverTimestamp(),
-                    "matricula" to idUsuarioLogado,
-                    "nome_usuario" to nomeUsuario,
-                    "obra_id" to currentLivro.id,
-                    "tipo" to tipoReserva,
-                    "titulo_obra" to currentLivro.titulo
-                )
-
-                // Para evitar cliques duplos que geram duplicidade no BD
                 binding.btnReservar.isEnabled = false
 
-                db.collection("reservas")
-                    .add(dadosReserva)
-                    .addOnSuccessListener { documentReference ->
-                        Toast.makeText(requireContext(), R.string.detalhes_reserva_sucesso, Toast.LENGTH_SHORT).show()
-                        binding.btnReservar.text = "Reservado"
+                if (isReservado && idDocumentoReserva != null) {
+                    // Para remover a reserva
+                    db.collection("reservas").document(idDocumentoReserva!!)
+                        .delete()
+                        .addOnSuccessListener {
+                            isReservado = false
+                            idDocumentoReserva = null
+
+                            binding.btnReservar.isEnabled = true
+                            binding.btnReservar.text = "Reservar"
+
+                            Toast.makeText(requireContext(), "Reserva cancelada com sucesso!", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            binding.btnReservar.isEnabled = true
+                            Toast.makeText(requireContext(), "Erro ao cancelar reserva: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    // Livro não reservado, cria a reserva
+                    val nomeUsuario = prefs.getString("nome_usuario_logado", "Usuário") ?: ""
+
+                    val tipoReserva = if (currentLivro.status == ("Disponível")) {
+                        "Direta"
+                    } else {
+                        "Fila"
                     }
-                    .addOnFailureListener { e ->
-                        binding.btnReservar.isEnabled = true // Reativa o botão
-                        Toast.makeText(requireContext(), "Erro ao realizar reserva: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
+
+                    val dadosReserva = hashMapOf(
+                        "data_reserva" to com.google.firebase.firestore.FieldValue.serverTimestamp(),
+                        "matricula" to idUsuarioLogado,
+                        "nome_usuario" to nomeUsuario,
+                        "obra_id" to currentLivro.id,
+                        "tipo" to tipoReserva,
+                        "titulo_obra" to currentLivro.titulo
+                    )
+
+                    db.collection("reservas")
+                        .add(dadosReserva)
+                        .addOnSuccessListener { documentReference ->
+                            isReservado = true
+                            idDocumentoReserva = documentReference.id
+
+                            binding.btnReservar.isEnabled = true
+                            binding.btnReservar.text = "Cancelar Reserva"
+
+                            Toast.makeText(requireContext(), R.string.detalhes_reserva_sucesso, Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            binding.btnReservar.isEnabled = true // Reativa o botão
+                            Toast.makeText(requireContext(), "Erro ao realizar reserva: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                }
+
             }
         }
 
