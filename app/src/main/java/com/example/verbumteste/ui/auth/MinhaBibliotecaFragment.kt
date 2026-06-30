@@ -70,6 +70,11 @@ class MinhaBibliotecaFragment : Fragment() {
                     return@addSnapshotListener
                 }
 
+                // Para não crashar quando o botão reservar dos detalhes for clicado
+                if (!isAdded || _binding == null) {
+                    return@addSnapshotListener
+                }
+
                 // Se não houver livros reservados
                 if (snapshots == null || snapshots.isEmpty) {
                     mostrarEstadoVazio()
@@ -89,6 +94,10 @@ class MinhaBibliotecaFragment : Fragment() {
                     .whereIn(FieldPath.documentId(), idsDosLivros)
                     .get()
                     .addOnSuccessListener { resultadoLivros ->
+
+                        // Correção anti crash ao clicar em reservar
+                        if (!isAdded || _binding == null) return@addOnSuccessListener
+
                         val listaDeLivros = resultadoLivros.documents.mapNotNull { doc ->
                             doc.toObject(Livro::class.java)?.copy(id = doc.id)
                         }.toMutableList()
@@ -104,7 +113,9 @@ class MinhaBibliotecaFragment : Fragment() {
                         }
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), R.string.erro_carregar_dados, Toast.LENGTH_SHORT).show()
+                        if (isAdded) {
+                            Toast.makeText(requireContext(), R.string.erro_carregar_dados, Toast.LENGTH_SHORT).show()
+                        }
                     }
             }
     }

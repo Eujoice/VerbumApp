@@ -160,12 +160,13 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:scrollbars="none"
                 android:clipToPadding="false"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
-                android:paddingBottom="8dp">
+                android:paddingBottom="8dp"
+                android:layout_marginBottom="86dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -201,25 +202,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Dom Quixote"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textColor="#477740"
-                            android:fontFamily="@font/fontpoppins"
-                            android:textStyle="bold"
-                            android:maxLines="2"
-                            android:ellipsize="end" />
+                            style="@style/bookTitleStyle"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Miguel de Cervantes"
-                            android:textAlignment="center"
-                            android:textSize="11sp"
-                            android:textColor="#888888"
-                            android:fontFamily="@font/fontpoppins"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
+                            style="@style/authorName" />
 
                         <!-- status -->
                         <TextView
@@ -268,25 +258,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Frankenstein"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            android:textColor="#477740"
-                            android:fontFamily="@font/fontpoppins"
-                            android:textStyle="bold"
-                            android:maxLines="2"
-                            android:ellipsize="end" />
+                            style="@style/bookTitleStyle"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:text="Mary Shelley"
-                            android:textAlignment="center"
-                            android:textSize="11sp"
-                            android:textColor="#888888"
-                            android:fontFamily="@font/fontpoppins"
-                            android:maxLines="1"
-                            android:ellipsize="end" />
+                            style="@style/authorName"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -304,8 +283,6 @@
                             android:background="@drawable/bg_chip_verde" />
 
                     </LinearLayout>
-
-
 
                 </LinearLayout>
             </HorizontalScrollView>

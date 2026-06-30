@@ -66,7 +66,10 @@ class DetalhesLivroFragment : Fragment() {
             binding.tvTituloLivro.text = currentLivro.titulo
             binding.tvAutorLivro.text = currentLivro.autor
             binding.tvDescricaoLivro.text = currentLivro.sinopse
-            binding.chipDisponibilidade.text = currentLivro.status
+
+            val txtStatusDisponibilidade = "Status: ${currentLivro.status}"
+            binding.chipDisponibilidade.text = txtStatusDisponibilidade
+
 
             if (idUsuarioLogado.isNotEmpty()) {
                 // Busca se este livro já foi favoritado por este usuário
@@ -129,8 +132,45 @@ class DetalhesLivroFragment : Fragment() {
                         }
                 }
             }
-        }
 
+            binding.btnReservar.setOnClickListener {
+                if (idUsuarioLogado.isEmpty()) {
+                    Toast.makeText(requireContext(), R.style.CustomAlertDialog.toString(), Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                val nomeUsuario = prefs.getString("nome_usuario_logado", "Usuário") ?: ""
+
+                val tipoReserva = if (currentLivro.status == ("Disponível")) {
+                    "Direta"
+                } else {
+                    "Fila"
+                }
+
+                val dadosReserva = hashMapOf(
+                    "data_reserva" to com.google.firebase.firestore.FieldValue.serverTimestamp(),
+                    "matricula" to idUsuarioLogado,
+                    "nome_usuario" to nomeUsuario,
+                    "obra_id" to currentLivro.id,
+                    "tipo" to tipoReserva,
+                    "titulo_obra" to currentLivro.titulo
+                )
+
+                // Para evitar cliques duplos que geram duplicidade no BD
+                binding.btnReservar.isEnabled = false
+
+                db.collection("reservas")
+                    .add(dadosReserva)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(requireContext(), R.string.detalhes_reserva_sucesso, Toast.LENGTH_SHORT).show()
+                        binding.btnReservar.text = "Reservado"
+                    }
+                    .addOnFailureListener { e ->
+                        binding.btnReservar.isEnabled = true // Reativa o botão
+                        Toast.makeText(requireContext(), "Erro ao realizar reserva: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
 
 
         val tvDescricao = view.findViewById<TextView>(R.id.tvDescricaoLivro)
@@ -157,12 +197,6 @@ class DetalhesLivroFragment : Fragment() {
         view.findViewById<TextView>(R.id.btnAvaliar).setOnClickListener {
             // TODO: Abrir diálogo de avaliação com RatingBar
             Toast.makeText(requireContext(), "Avalie este livro!", Toast.LENGTH_SHORT).show()
-        }
-
-        // Botão Reservar
-        view.findViewById<Button>(R.id.btnReservar).setOnClickListener {
-            // TODO: Chamar API de reserva
-            Toast.makeText(requireContext(), "Livro reservado com sucesso! ✅", Toast.LENGTH_LONG).show()
         }
     }
 

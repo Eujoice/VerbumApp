@@ -58,6 +58,7 @@
     <string name="detalhes_disponibilidade_desc">Disponibilidade</string>
     <string name="detalhes_btn_avaliar">Avaliar</string>
     <string name="detalhes_btn_reservar">Reservar</string>
+    <string name="detalhes_reserva_sucesso">Reserva realizada com sucesso!</string>
     <string name="detalhes_btn_favoritar_desc">Favoritar</string>
 
     <string name="favoritos_titulo">Favoritos</string>
