@@ -96,5 +96,7 @@
     <string name="realize_login">Faça login!</string>
     
     <string name="erro_carregar_dados">Erro ao carregar dados</string>
+    <string name="acervo_guia_principal">Principal</string>
+    <string name="acervo_guia_generos">Gêneros</string>
 
 </resources>

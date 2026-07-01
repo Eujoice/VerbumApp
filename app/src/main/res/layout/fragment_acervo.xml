@@ -9,9 +9,10 @@
     android:background="@color/white">
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,13 +38,13 @@
                     android:paddingBottom="60dp">
 
                     <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/fontpoppins"
-                    android:textColor="#FFFFFF"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:paddingTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/fontpoppins"
+                        android:textColor="#FFFFFF"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        android:paddingTop="5dp"
                         android:text="@string/acervo_titulo"/>
 
                     <EditText
@@ -92,109 +93,178 @@
 
             </LinearLayout>
 
+            <!-- ===== Guia Principal / Gêneros ===== -->
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="18dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtNomeGenero1"
+                    android:id="@+id/chipPrincipal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/GenreTitle"/>
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/gb_chip_selecionado"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/fontpoppins"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/acervo_guia_principal"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/chipGeneros"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
-                    android:drawableTint="@color/color_default"
-                    android:text="@string/genero_ver_mais"
-                    android:drawablePadding="12dp"
-                    style="@style/VerMaisGenero"/>
+                    android:background="@drawable/bg_chip_nao_selecionado"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/fontpoppins"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/acervo_guia_generos"
+                    android:textColor="@color/color_default"
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerGenero1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_livro"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:paddingStart="18dp"
-                android:clipToPadding="false"/>
-
-
+            <!-- ===== Conteúdo da guia "Principal" (o que já existia, agora dentro de um container) ===== -->
             <LinearLayout
+                android:id="@+id/layoutConteudoPrincipal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                <TextView
-                    android:id="@+id/txtNomeGenero2"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/GenreTitle"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtNomeGenero1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/GenreTitle"
+                        android:paddingTop="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                        android:drawableTint="@color/color_default"
+                        android:text="@string/genero_ver_mais"
+                        android:drawablePadding="12dp"
+                        style="@style/VerMaisGenero"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerGenero1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
-                    android:drawableTint="@color/color_default"
-                    android:text="@string/genero_ver_mais"
-                    android:drawablePadding="12dp"
-                    style="@style/VerMaisGenero"/>
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_livro"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:paddingStart="18dp"
+                    android:clipToPadding="false"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtNomeGenero2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/GenreTitle"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                        android:drawableTint="@color/color_default"
+                        android:text="@string/genero_ver_mais"
+                        android:drawablePadding="12dp"
+                        style="@style/VerMaisGenero"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerGenero2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_livro"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:paddingStart="18dp"
+                    android:clipToPadding="false"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtNomeGenero3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/GenreTitle"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/outline_arrow_circle_right_24"
+                        android:drawableTint="@color/color_default"
+                        android:text="@string/genero_ver_mais"
+                        android:drawablePadding="12dp"
+                        style="@style/VerMaisGenero"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerGenero3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_livro"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:paddingStart="18dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="80dp"/>
 
             </LinearLayout>
 
+            <!-- ===== Conteúdo da guia "Gêneros" (grid 2 colunas) ===== -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerGenero2"
+                android:id="@+id/recyclerGeneros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_livro"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:paddingStart="18dp"
-                android:clipToPadding="false"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtNomeGenero3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/GenreTitle"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/outline_arrow_circle_right_24"
-                    android:drawableTint="@color/color_default"
-                    android:text="@string/genero_ver_mais"
-                    android:drawablePadding="12dp"
-                    style="@style/VerMaisGenero"/>
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerGenero3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_livro"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:paddingStart="18dp"
+                android:layout_marginTop="4dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="80dp"
                 android:clipToPadding="false"
-                android:paddingBottom="80dp"/>
+                android:visibility="gone"
+                tools:listitem="@layout/item_genero"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
 
 
         </LinearLayout>
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

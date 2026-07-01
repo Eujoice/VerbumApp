@@ -19,6 +19,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.verbumteste.databinding.FragmentAcervoBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.util.Log
 
 class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
 
@@ -26,8 +29,6 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
     private val binding get() = _binding!!
 
     private val db = FirebaseFirestore.getInstance()
-
-    private lateinit var livroAdapter: LivroAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,12 +50,52 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             R.drawable.tartarugasatelaembaixobanner,
             R.drawable.bibliotecadameianoitebanner
         )
+        val listaGeneros = listOf(
+            Genero("Romance", "#E0339C"),
+            Genero("Ficção", "#6FBE3E"),
+            Genero("Clássicos", "#E1392E"),
+            Genero("Suspense", "#5B4FE0")
+        )
 
-        // ======== MUDANÇA A PARTIR DAQUI
+        val geroAdapter = GeneroAdapter2(listaGeneros) { genero ->
+            Toast.makeText(requireContext(), "Gênero: ${genero.nome}", Toast.LENGTH_SHORT).show()
+        }
+
+
+        binding.recyclerGeneros.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerGeneros.adapter = geroAdapter
+        binding.recyclerGeneros.isNestedScrollingEnabled = false
+
+        binding.recyclerGeneros.isNestedScrollingEnabled = false
+
+        binding.chipPrincipal.setOnClickListener {
+            binding.chipPrincipal.setBackgroundResource(R.drawable.gb_chip_selecionado)
+            binding.chipPrincipal.setTextColor(Color.WHITE)
+            binding.chipGeneros.setBackgroundResource(R.drawable.bg_chip_nao_selecionado)
+            binding.chipGeneros.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_default))
+            binding.layoutConteudoPrincipal.visibility = View.VISIBLE
+            binding.recyclerGeneros.visibility = View.GONE
+        }
+
+        binding.chipGeneros.setOnClickListener {
+            try {
+                binding.chipGeneros.setBackgroundResource(R.drawable.gb_chip_selecionado)
+                binding.chipGeneros.setTextColor(Color.WHITE)
+                binding.chipPrincipal.setBackgroundResource(R.drawable.bg_chip_nao_selecionado)
+                binding.chipPrincipal.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_default))
+
+                binding.layoutConteudoPrincipal.visibility = View.GONE
+                binding.recyclerGeneros.visibility = View.VISIBLE
+            } catch (t: Throwable) {
+                // Se falhar antes da renderização, avisa na tela o erro exato
+                Log.e("FragmentAcervo", "Erro no clique de gêneros", t)
+                Toast.makeText(requireContext(), "Erro: ${t.javaClass.simpleName}", Toast.LENGTH_LONG).show()
+            }
+        }
+
         viewPager.adapter = BannerAdapter(images) { realIndex ->
-            // Executa uma busca do livro no Firestore baseado no banner clicado
             val tituloLivroBuscado = when (realIndex) {
-                0 -> "Percy Jackson e os Olimpianos: O Ladrão de Raios" // Substitua pelo título EXATO do livro no banco
+                0 -> "Percy Jackson e os Olimpianos: O Ladrão de Raios"
                 1 -> "Tartarugas Até Lá Embaixo"
                 2 -> "A Biblioteca da Meia-Noite"
                 else -> ""
@@ -69,7 +110,6 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
                             val livroClicado = result.documents.first().toObject(Livro::class.java)
 
                             if (livroClicado != null) {
-                                // Abre a tela de detalhes exatamente igual você faz na recycler
                                 val bundle = Bundle().apply {
                                     putSerializable("CHAVE_LIVRO", livroClicado)
                                 }
@@ -85,7 +125,6 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             }
         }
 
-        // ======= TERMINA AQUI
         viewPager.offscreenPageLimit = 3
 
         val startPosition = (BannerAdapter.FAKE_SIZE / 2) - (BannerAdapter.FAKE_SIZE / 2 % images.size)
@@ -172,16 +211,13 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
         db.collection("obras")
             .get()
             .addOnSuccessListener { result ->
-
                 val livros = result.documents.mapNotNull { it.toObject(Livro::class.java) }
-
                 val porGenero = livros.groupBy { it.genero }
-                val generos = porGenero.keys.toSortedSet().toList() // oredem alfabética e transformação em lista
+                val generos = porGenero.keys.toSortedSet().toList()
 
                 configurarRecycler(binding.recyclerGenero1, binding.txtNomeGenero1, generos.getOrNull(0), porGenero)
                 configurarRecycler(binding.recyclerGenero2, binding.txtNomeGenero2, generos.getOrNull(1), porGenero)
                 configurarRecycler(binding.recyclerGenero3, binding.txtNomeGenero3, generos.getOrNull(2), porGenero)
-
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(requireContext(), "Erro ao carregar dados: ${exception.message}", Toast.LENGTH_SHORT).show()
@@ -211,12 +247,48 @@ class FragmentAcervo : Fragment(R.layout.fragment_acervo) {
             }
             findNavController().navigate(R.id.action_fragment_acervo_to_detalhesLivroFragment, bundle)
         })
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+}
 
+class GeneroAdapter2(
+    private val listaGeneros: List<Genero>,
+    private val onGeneroClick: (Genero) -> Unit
+) : RecyclerView.Adapter<GeneroAdapter2.GeneroViewHolder>() {
+
+    inner class GeneroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val bg: View = view.findViewById(R.id.bgGenero)
+        val tvNome: TextView = view.findViewById(R.id.tvNomeGenero)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GeneroViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_genero, parent, false)
+        return GeneroViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: GeneroViewHolder, position: Int) {
+        val genero = listaGeneros[position]
+        holder.tvNome.text = genero.nome
+
+        try {
+            val formatoArredondado = GradientDrawable().apply {
+                shape = GradientDrawable.RECTANGLE
+                cornerRadius = 18 * holder.itemView.resources.displayMetrics.density
+                setColor(Color.parseColor(genero.cor))
+            }
+            holder.bg.background = formatoArredondado
+        } catch (e: Exception) {
+            Log.e("GeneroAdapter2", "Falha de renderização: ${e.message}")
+            holder.bg.setBackgroundColor(Color.GRAY)
+        }
+
+        holder.itemView.setOnClickListener { onGeneroClick(genero) }
+    }
+
+    override fun getItemCount(): Int = listaGeneros.size
 }
