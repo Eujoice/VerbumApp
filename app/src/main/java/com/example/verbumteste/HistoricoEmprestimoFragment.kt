@@ -1,5 +1,6 @@
 package com.example.verbumteste
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 
 class HistoricoEmprestimoFragment : Fragment() {
 
+    private lateinit var historicoAdapter: HistoricoAdapter
+    private val db = FirebaseFirestore.getInstance()
     private lateinit var rvHistorico: RecyclerView
     private lateinit var layoutVazio: View
     private lateinit var btnVoltar: View
@@ -31,11 +35,20 @@ class HistoricoEmprestimoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val prefs = requireContext().getSharedPreferences("verbum_prefs", Context.MODE_PRIVATE)
+        val idUsuarioLogado = prefs.getString("id_usuario_logado", "") ?: ""
+
         rvHistorico = view.findViewById(R.id.rvHistoricoEmprestimos)
         layoutVazio = view.findViewById(R.id.layoutVazio)
         btnVoltar = view.findViewById(R.id.btnVoltar)
 
+        historicoAdapter = HistoricoAdapter(emptyList())
         rvHistorico.layoutManager = LinearLayoutManager(requireContext())
+        rvHistorico.adapter = historicoAdapter
+
+        if (idUsuarioLogado.isNotEmpty()) {
+            carregarHistorico() // Parei aqui
+        }
 
         btnVoltar.setOnClickListener {
             findNavController().popBackStack()

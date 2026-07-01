@@ -52,17 +52,7 @@
                         android:textColor="@color/dark_green"
                         android:maxLines="2"
                         android:ellipsize="end"
-                        android:text="Título do Livro – Autor" />
-
-                    <TextView
-                        android:id="@+id/txtExemplarHistorico"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/fontpoppins"
-                        android:textSize="12sp"
-                        android:textColor="@color/gray_subtitle"
-                        android:text="Exemplar: 00000" />
+                        android:text="Título do Livro" />
 
                 </LinearLayout>
             </LinearLayout>
