@@ -3,6 +3,7 @@ package com.example.verbumteste
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.verbumteste.databinding.ItemHistoricoEmprestimoBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -24,18 +25,19 @@ class HistoricoAdapter(
 
         holder.binding.txtTituloHistorico.text = item.titulo_obra
 
-        val formatador = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+        Glide.with(holder.itemView.context)
+            .load(item.capa_obra)
+            //.placeholder(R.drawable.placeholder_livro)
+            .into(holder.binding.imgCapaHistorico)
 
-        if (item.data_retirada != null) {
-            val dataRetiradaData = item.data_retirada.toDate()
-            holder.binding.txtDataEmprestimo.text = "${formatador.format(dataRetiradaData)}"
+        if (!item.data_retirada.isNullOrEmpty()) {
+            holder.binding.txtDataEmprestimo.text = item.data_retirada
         } else {
             holder.binding.txtDataEmprestimo.text = "--/--/----"
         }
 
-        if (item.data_devolucao_real != null) {
-            val dataDevolucaoData = item.data_devolucao_real.toDate()
-            holder.binding.txtDataDevolucao.text = "${formatador.format(dataDevolucaoData)}"
+        if (!item.data_devolucao_real.isNullOrEmpty()) {
+            holder.binding.txtDataDevolucao.text = item.data_devolucao_real
         } else {
             // Caso esteja com o suário e não tenha sido devolvido
             holder.binding.txtDataDevolucao.text = "Em andamento"
